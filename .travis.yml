@@ -30,9 +30,6 @@ branches:
 script:
   - doxygen Doxyfile
   - make
-  - make run_import
-  - ls -la *
-  - make run_display
 
 deploy:
   provider: pages
