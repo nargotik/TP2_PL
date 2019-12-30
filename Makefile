@@ -45,7 +45,6 @@ OFLAGS = -lm
 .PHONY: all
 all: $(BIN) #docs
 
-
 $(BINDIR):
 	mkdir -p $(BINDIR)
 
@@ -57,23 +56,23 @@ $(INCLDIR):
 
 # Regras
 
-$(BIN): $(BINDIR) $(OBJS) $(BISONOBJS) $(FLEXOBJS)
+$(BIN): $(BINDIR) $(BISONGEN) $(OBJS) $(BISONOBJS) $(FLEXOBJS)
 	$(CC) -o $(BIN) $(OBJS) $(BISONOBJS) $(FLEXOBJS) $(OFLAGS)
 
-$(OBJS): $(OBJDIR) $(SRC) $(BISONHEAD)
+$(OBJS): $(OBJDIR) $(SRC)
 	$(CC) -c $(patsubst %.o, %.c, $(patsubst obj/%, src/%, $@)) -o $@ $(CFLAGS)
 
 $(FLEXOBJS): $(FLEXGEN)
 	$(CC) -c $(patsubst %.o, %.c, $(patsubst obj/%, include/%, $@)) -o $@ $(CFLAGS)
 
-$(BISONOBJS): $(BISONGEN) $(BISONHEAD)
+$(BISONOBJS): $(BISONGEN)
 	$(CC) -c $(patsubst %.o, %.c, $(patsubst obj/%, include/%, $@)) -o $@ $(CFLAGS)
 
-$(BISONGEN) $(BISONHEAD): $(INCLDIR) $(BISONFILES)
+$(BISONGEN): $(INCLDIR) $(BISONFILES)
 	bison -b include/grammar -d src/grammar.y
 
 $(FLEXGEN): $(INCLDIR) $(FLEXFILES)
-	flex -o include/lexer.yy.c -b src/*.l
+	flex -o include/lexer.yy.c -b src/lexer.l
 
 
 DOCDIR = docs/

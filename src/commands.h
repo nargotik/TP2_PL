@@ -1,4 +1,4 @@
-
+#define DEBUG 1
 // Tabela de Simbolos
 typedef struct _varList {
     char *var;
@@ -14,13 +14,26 @@ typedef struct _Turtle {
 Turtle *newTurtle();
 
 typedef struct _Value {
-    // H1
-    //  int type;
-    //  union { char *var; int val; } value;
-    // H2
     char *var;  // if this is null, use val, else use var name
     int val;
 } Value;
+
+typedef struct _Dimension {
+    int x;
+    int y;
+} Dimension;
+
+typedef struct _Point {
+    int x;
+    int y;
+    struct _Point* next;
+} Point;
+
+typedef struct _Colour {
+    int r;
+    int g;
+    int b;
+} Colour;
 
 typedef struct _Command {
     int command;  // using grammar.tab.h enum (yytokentype)
@@ -30,6 +43,9 @@ typedef struct _Command {
     struct _Command *child;
 } Command;
 
+Colour *parseColour(int r, int g, int b);
+Dimension *parseDimension(int x, int y);
+Point *parsePoint(Point *lst, int x, int y);
 
 void Draw(Command *lst);
 // Creates a new cell for a command

@@ -5,13 +5,22 @@
 /*11*/
 %%
 
-make        { return MAKE; }
-repeat      { return REPEAT; }
-forward|fd  { return FORWARD; }
-right|rt    { return RIGHT; }
+NEW|new     { return NEW; }
+LOAD|load     { return LOAD; }
+LINE|load     { return LINE; }
+SAVE|save     { return SAVE; }
+COLOR|color     { return COLOR; }
+POINT|point     { return POINT; }
+RECT|rect     { return RECT; }
+RECTFILL|rectfill     { return RECTFILL; }
+CIRC|circ     { return CIRC; }
+POLYLINE|polyline     { return POLYLINE; }
+
+\; { return EOC; }
 
 \"[a-z]+    { yylval.str = strdup(yytext+1); return VAR_NAME; }
 :[a-z]+     { yylval.str = strdup(yytext+1); return VAR_VALUE; }
+\"[1-9a-zA-Z\.]+\"    { yylval.str = strdup(yytext+1); return FILE_NAME; }
 
 [0-9]+      { yylval.num = atoi(yytext); return INT; }
 

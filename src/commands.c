@@ -5,6 +5,33 @@
 #include "../src/commands.h"
 #include "../include/grammar.tab.h"
 
+Colour *parseColour(int r, int g, int b) {
+     Colour* v = (Colour*)malloc(sizeof(Colour));
+     v->r = (r > 255) ? 255 : (r<0 ? 0 :r );
+     v->g = (g > 255) ? 255 : (g<0 ? 0 :g );
+     v->b = (b > 255) ? 255 : (b<0 ? 0 :b );
+     if (DEBUG) printf("DEBUG: COLOR %d %d %d \n",v->r,v->g,v->b);
+     return v;
+}
+
+Dimension *parseDimension(int x, int y) {
+     Dimension* v = (Dimension*)malloc(sizeof(Dimension));
+     v->x = (x<= 0 ? 1 : x );
+     v->y = (y<= 0 ? 1 : y );
+     if (DEBUG) printf("DEBUG: DIMENSION %d x %d \n",v->x,v->y);
+     return v;
+}
+
+Point *parsePoint(Point *lst, int x, int y) {
+     Point* v = (Point*)malloc(sizeof(Point));
+     v->x = (x<= 0 ? 1 : x );
+     v->y = (y<= 0 ? 1 : y );
+     v->next = lst;
+     if (DEBUG) printf("DEBUG: parsePoint POINT %d,%d \n",v->x,v->y);
+     return v;
+}
+
+
 Turtle *newTurtle() {
     Turtle *turtle = (Turtle*) malloc(sizeof(Turtle));
     turtle->x = turtle->y = 200;
@@ -43,6 +70,8 @@ VarList* updateVar(VarList *lst, char *varName, float varValue) {
     return lst;
 }
 
+
+
 float evalValue(VarList *lst, Value *val) {
     if (val->var == NULL) {
         return val->val;
@@ -55,7 +84,7 @@ float evalValue(VarList *lst, Value *val) {
 void DrawCommand(Command *lst, Turtle *turtle) {
     if (!lst) return; // no more commands to process
 
-    switch (lst->command) {
+    /*switch (lst->command) {
 
         case MAKE:
            {
@@ -102,6 +131,7 @@ void DrawCommand(Command *lst, Turtle *turtle) {
     }
 
     DrawCommand(lst->next, turtle);
+    */
 }
 
 void Draw(Command *lst) {
@@ -129,12 +159,12 @@ Command* insertCommand(Command *lst, Command *cmd) {
 
 Command* newVariable(char *variable, Value* value) {
     Command *cmd = (Command*) malloc(sizeof(Command));
-    cmd->command = MAKE;
+    /*cmd->command = MAKE;
     cmd->arg = (Value*) malloc(sizeof(Value));
     cmd->arg->var = variable;
     cmd->arg2 = value;
     cmd->next = NULL;
-    cmd->child = NULL;
+    cmd->child = NULL;*/
     return cmd;
 }
 
