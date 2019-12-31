@@ -122,7 +122,6 @@ float evalVar(VarList *lst, char *varName) {
     if (strcmp(lst->var, varName) == 0) {
         return lst->val;
     } else {
-      piu
         return evalVar(lst->next, varName);
     }
 }
