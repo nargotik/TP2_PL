@@ -1,20 +1,20 @@
 ﻿# Trabalho Prático de PL
 
-O presente software foi desenvolvido no contexto académico e deve ser utilizado sem qualquer garantia por conta e risco do utilizador. 
+O presente software foi desenvolvido no contexto académico e deve ser utilizado sem qualquer garantia por conta e risco do utilizador.
+
+[![Build Status](https://travis-ci.com/nargotik/TP2_PL.svg?token=qNfqiYyxNzmWoPqpyHnZ&branch=master)](https://travis-ci.com/nargotik/TP2_PL)
 
 
-@todo - Travis
-
-**Autores:** 
+**Autores:**
 - José Moura <a13742@alunos.ipca.pt>
 - Óscar Silva <a14383@alunos.ipca.pt>
 - Daniel Filipe <a17442@alunos.ipca.pt>
 
-**Links Uteis** 
+**Links Uteis**
 - GitHub:
 [https://github.com/nargotik/TP2_PL](https://github.com/nargotik/TP2_PL)
-- Documentação:
-@todo
+- Documentação: [https://nargotik.github.io/TP2_PL/](https://nargotik.github.io/TP2_PL/)
+
 
 ## Introdução
 Para a realização deste trabalho foram utilizadas as ferramentas abaixo descritas:
