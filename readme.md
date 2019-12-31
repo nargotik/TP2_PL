@@ -8,7 +8,7 @@ O presente software foi desenvolvido no contexto académico e deve ser utilizado
 **Autores:**
 - José Moura <a13742@alunos.ipca.pt>
 - Óscar Silva <a14383@alunos.ipca.pt>
-- Daniel Filipe <a17442@alunos.ipca.pt>
+- Daniel Torres <a17442@alunos.ipca.pt>
 
 **Links Uteis**
 - GitHub:
