@@ -5,39 +5,113 @@
 #include "../src/commands.h"
 #include "../include/grammar.tab.h"
 
-Colour *parseColour(int r, int g, int b) {
+Colour *parseColour(Value *r, Value *g, Value *b) {
      Colour* v = (Colour*)malloc(sizeof(Colour));
-     v->r = (r > 255) ? 255 : (r<0 ? 0 :r );
-     v->g = (g > 255) ? 255 : (g<0 ? 0 :g );
-     v->b = (b > 255) ? 255 : (b<0 ? 0 :b );
-     if (DEBUG) printf("DEBUG: COLOR %d %d %d \n",v->r,v->g,v->b);
+     v->r = *r;
+     v->g = *g;
+     v->b = *b;
      return v;
 }
 
-Dimension *parseDimension(int x, int y) {
+Dimension *parseDimension(Value *x, Value *y) {
      Dimension* v = (Dimension*)malloc(sizeof(Dimension));
-     v->x = (x<= 0 ? 1 : x );
-     v->y = (y<= 0 ? 1 : y );
-     if (DEBUG) printf("DEBUG: DIMENSION %d x %d \n",v->x,v->y);
+     v->x = *x;
+     v->y = *y;
      return v;
 }
 
-Point *parsePoint(Point *lst, int x, int y) {
+Point *parsePoint(Point *lst, Value *x, Value *y) {
      Point* v = (Point*)malloc(sizeof(Point));
-     v->x = (x<= 0 ? 1 : x );
-     v->y = (y<= 0 ? 1 : y );
+     v->x = *x;
+     v->y = *y;
      v->next = lst;
-     if (DEBUG) printf("DEBUG: parsePoint POINT %d,%d \n",v->x,v->y);
      return v;
 }
 
+Value *parseValue(int val, char* str) {
+    Value* v = (Value*)malloc(sizeof(Value));
+     v->val = val;
+     v->var = str; // so we know this is an INTeger
+     return v;
+}
 
-Turtle *newTurtle() {
-    Turtle *turtle = (Turtle*) malloc(sizeof(Turtle));
-    turtle->x = turtle->y = 200;
-    turtle->rot = M_PI / 2;
-    turtle->vars = NULL;  // No variables defined so far...
-    return turtle;
+Command* newCommand(
+  int command,
+  Point *pt,
+  Dimension *dim,
+  Colour *col,
+  Value *val,
+  Value *val2 ,
+  Value *str,
+  Value *str2,
+  Command *child
+) {
+    Command *node = (Command*) malloc (sizeof(Command));
+    node->command = command;
+    node->point = pt;
+    node->dimension = dim;
+    node->color = col;
+    node->val = val;
+    node->val2 = val2;
+    node->str = str;
+    node->str2 = str2;
+    node->child = child;
+    node->next = NULL;
+    return node;
+}
+
+Command* insertCommand(Command *lst, Command *cmd) {
+    cmd->next = lst;
+    return cmd;
+}
+
+void showCommands(Command *lst) {
+    if (!lst) return;
+    switch(lst->command) {
+        case FOR:
+            printf("repeat %d [\n", lst->val->val);
+            showCommands(lst->child);
+            printf("]\n");
+            break;
+        case NEW:
+            printf("NEW =>");
+            break;
+        case COLOR:
+            printf("COLOR =>");
+            break;
+        case LOAD:
+            printf("LOAD =>");
+            break;
+        case SAVE:
+            printf("SAVE =>");
+            break;
+        case POINT:
+            printf("POINT =>");
+            break;
+        case LINE:
+            printf("LINE =>");
+            break;
+        case RECT:
+            printf("RECT =>");
+            break;
+        case RECTFILL:
+            printf("RECTFILL =>");
+            break;
+        case CIRC:
+            printf("CIRC =>");
+            break;
+        case POLYLINE:
+            printf("POLYLINE =>");
+            break;
+        case ATTRIB:
+            printf("ATTRIB =>");
+            break;
+        case ATTRIB_RAND:
+            printf("ATTRIB_RAND =>");
+            break;
+
+    }
+    showCommands(lst->next);
 }
 
 float evalVar(VarList *lst, char *varName) {
@@ -51,6 +125,27 @@ float evalVar(VarList *lst, char *varName) {
         return evalVar(lst->next, varName);
     }
 }
+
+float evalValue(VarList *lst, Value *val) {
+    if (val->var == NULL) {
+        return val->val;
+    }
+    else {
+        return evalVar(lst, val->var);
+    }
+}
+
+
+
+Turtle *newTurtle() {
+    Turtle *turtle = (Turtle*) malloc(sizeof(Turtle));
+    turtle->x = turtle->y = 200;
+    turtle->rot = M_PI / 2;
+    turtle->vars = NULL;  // No variables defined so far...
+    return turtle;
+}
+
+
 
 VarList* updateVar(VarList *lst, char *varName, float varValue) {
     if (lst == NULL) {
@@ -72,14 +167,7 @@ VarList* updateVar(VarList *lst, char *varName, float varValue) {
 
 
 
-float evalValue(VarList *lst, Value *val) {
-    if (val->var == NULL) {
-        return val->val;
-    }
-    else {
-        return evalVar(lst, val->var);
-    }
-}
+
 
 void DrawCommand(Command *lst, Turtle *turtle) {
     if (!lst) return; // no more commands to process
@@ -143,19 +231,9 @@ void Draw(Command *lst) {
     printf("</svg>\n");
 }
 
-Command* newCommand(int command, Value *arg, Command *child) {
-    Command *node = (Command*) malloc (sizeof(Command));
-    node->command = command;
-    node->arg = arg;
-    node->child = child;
-    node->next = NULL;
-    return node;
-}
 
-Command* insertCommand(Command *lst, Command *cmd) {
-    cmd->next = lst;
-    return cmd;
-}
+
+
 
 Command* newVariable(char *variable, Value* value) {
     Command *cmd = (Command*) malloc(sizeof(Command));
@@ -169,21 +247,5 @@ Command* newVariable(char *variable, Value* value) {
 }
 
 /*
-void showCommands(Command *lst) {
-    if (!lst) return;
-    switch(lst->command) {
-        case REPEAT:
-            printf("repeat %d [\n", lst->arg);
-            showCommands(lst->child);
-            printf("]\n");
-            break;
-        case RIGHT:
-            printf("right %d\n", lst->arg);
-            break;
-        case FORWARD:
-            printf("forward %d\n", lst->arg);
-            break;
-    }
-    showCommands(lst->next);
-}
+
 */

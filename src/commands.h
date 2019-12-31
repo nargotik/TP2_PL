@@ -6,6 +6,43 @@ typedef struct _varList {
     struct _varList* next;
 } VarList;
 
+typedef struct _Value {
+    char *var;  // if this is null, use val, else use var name
+    int val;
+} Value;
+
+typedef struct _Dimension {
+    Value x;
+    Value y;
+} Dimension;
+
+typedef struct _Point {
+    Value x;
+    Value y;
+    struct _Point* next;
+} Point;
+
+typedef struct _Colour {
+    Value r;
+    Value g;
+    Value b;
+} Colour;
+
+typedef struct _Command {
+    int command;  // using grammar.tab.h enum (yytokentype)
+    Value *arg;
+    Value *arg2;   // second argument, used on make
+    Point *point;
+    Dimension *dimension;
+    Colour *color;
+    Value *val;
+    Value *val2;
+    Value *str;
+    Value *str2;
+    struct _Command *next;
+    struct _Command *child;
+} Command;
+
 typedef struct _Turtle {
     float x, y, rot;
     VarList *vars;
@@ -13,43 +50,15 @@ typedef struct _Turtle {
 
 Turtle *newTurtle();
 
-typedef struct _Value {
-    char *var;  // if this is null, use val, else use var name
-    int val;
-} Value;
-
-typedef struct _Dimension {
-    int x;
-    int y;
-} Dimension;
-
-typedef struct _Point {
-    int x;
-    int y;
-    struct _Point* next;
-} Point;
-
-typedef struct _Colour {
-    int r;
-    int g;
-    int b;
-} Colour;
-
-typedef struct _Command {
-    int command;  // using grammar.tab.h enum (yytokentype)
-    Value *arg;
-    Value *arg2;   // second argument, used on make
-    struct _Command *next;
-    struct _Command *child;
-} Command;
-
-Colour *parseColour(int r, int g, int b);
-Dimension *parseDimension(int x, int y);
-Point *parsePoint(Point *lst, int x, int y);
+Colour *parseColour(Value *r, Value *g, Value *b);
+Dimension *parseDimension(Value *x, Value *y);
+Point *parsePoint(Point *lst, Value *x, Value *y);
+Command* newCommand(int command, Point *pt, Dimension *dim, Colour *col, Value *val, Value *val2 ,Value *str, Value *str2, Command *child) ;
+Value *parseValue(int val, char* str);
 
 void Draw(Command *lst);
 // Creates a new cell for a command
-Command* newCommand(int command, Value *arg, Command *child);
+
 Command* newVariable(char *variable, Value* value);
 // Inserts at the head of a list a command
 Command* insertCommand(Command *lst, Command *cmd);

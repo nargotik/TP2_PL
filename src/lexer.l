@@ -15,14 +15,25 @@ RECT|rect     { return RECT; }
 RECTFILL|rectfill     { return RECTFILL; }
 CIRC|circ     { return CIRC; }
 POLYLINE|polyline     { return POLYLINE; }
+FOR|for     { return FOR; }
+IN|in     { return IN; }
+DO|do     { return DO; }
+END|end     { return END; }
+\.\.    { return TO; }
+
+RAND|rand     { return RAND; }
 
 \; { return EOC; }
 
-\"[a-z]+    { yylval.str = strdup(yytext+1); return VAR_NAME; }
-:[a-z]+     { yylval.str = strdup(yytext+1); return VAR_VALUE; }
-\"[1-9a-zA-Z\.]+\"    { yylval.str = strdup(yytext+1); return FILE_NAME; }
+x { return CRUZ; }
 
 [0-9]+      { yylval.num = atoi(yytext); return INT; }
+
+[a-v]+([0-9]+)?    { yylval.str = strdup(yytext); return VAR_NAME; }
+
+\"[1-9a-zA-Z\.]+\"    { yylval.str = strdup(yytext+1); return FILE_NAME; }
+
+
 
 [ \t\n\r]   {}
 .           { return yytext[0]; }
