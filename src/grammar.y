@@ -25,7 +25,7 @@
 %type<pt> v_point v_points_multiple v_points_two
 %type<val> value
 
-%start program;
+%start program
 
 %%
 
