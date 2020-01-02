@@ -2,7 +2,8 @@
  #include "../src/commands.h"
  #include "../include/grammar.tab.h"
 %}
-/*11*/
+
+
 %%
 
 NEW|new     { return NEW; }
