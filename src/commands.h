@@ -1,3 +1,6 @@
+#ifndef COMMANDS_H
+#define COMMANDS_H
+
 #define DEBUG 1
 // Tabela de Simbolos
 typedef struct _varList {
@@ -30,8 +33,6 @@ typedef struct _Colour {
 
 typedef struct _Command {
     int command;  // using grammar.tab.h enum (yytokentype)
-    Value *arg;
-    Value *arg2;   // second argument, used on make
     Point *point;
     Dimension *dimension;
     Colour *color;
@@ -48,7 +49,15 @@ typedef struct _Turtle {
     VarList *vars;
 } Turtle;
 
-Turtle *newTurtle();
+typedef struct _Image {
+    int r,g,b;
+    int x_size,y_size;
+    VarList *vars;
+    int *img_data;
+} Image;
+
+Image *newImage();
+
 
 Colour *parseColour(Value *r, Value *g, Value *b);
 Dimension *parseDimension(Value *x, Value *y);
@@ -56,11 +65,15 @@ Point *parsePoint(Point *lst, Value *x, Value *y);
 Command* newCommand(int command, Point *pt, Dimension *dim, Colour *col, Value *val, Value *val2 ,Value *str, Value *str2, Command *child) ;
 Value *parseValue(int val, char* str);
 
-void Draw(Command *lst);
-// Creates a new cell for a command
+void runCommands(Command *lst, Image *image);
+void Run(Command *lst);
+
+
 
 Command* newVariable(char *variable, Value* value);
 // Inserts at the head of a list a command
 Command* insertCommand(Command *lst, Command *cmd);
-// Pretty print command list
-void showCommands(Command *lst);
+
+int gera_random(int min, int max);
+
+#endif /* COMMANDS_H */

@@ -1,5 +1,6 @@
 %{
   #include <stdio.h>
+  #include <string.h>
   #include "../src/commands.h"
   int yylex();
   int yyerror(char*);
@@ -26,10 +27,11 @@
 %type<val> value
 
 %start program;
+%expect 1
 
 %%
 
-program : instructionList { showCommands($1); }
+program : instructionList { Run($1); }
         ;
 
 instructionList : instruction { $$ = $1; }
@@ -82,6 +84,9 @@ instruction : NEW v_dimension EOC {
             }
             | LOAD FILE_NAME EOC {
                   //printf("CMD Load: %s\n" ,$2);
+                  char *filename = strdup($2);
+                  filename[strlen(filename) - 1 ] = '\0';
+
                   $$ =   newCommand(
                     LOAD, /* Command*/
                     NULL, /*Point*/
@@ -89,13 +94,16 @@ instruction : NEW v_dimension EOC {
                     NULL, /*Colours*/
                     NULL, /*Val*/
                     NULL, /*Val1*/
-                    NULL, /*str1*/  //@todo $2
+                    parseValue(0,filename), /*str1*/
                     NULL, /*str2*/
                     NULL /*next*/
                     );
             }
             | SAVE FILE_NAME EOC {
                   //printf("CMD Save: %s\n" ,$2);
+                  char *filename = strdup($2);
+                  filename[strlen(filename) - 1 ] = '\0';
+
                   $$ =   newCommand(
                     SAVE, /* Command*/
                     NULL, /*Point*/
@@ -103,7 +111,7 @@ instruction : NEW v_dimension EOC {
                     NULL, /*Colours*/
                     NULL, /*Val*/
                     NULL, /*Val1*/
-                    NULL, /*str1*/  //@todo $2
+                    parseValue(0,filename), /*str1*/
                     NULL, /*str2*/
                     NULL /*next*/
                     );
@@ -426,10 +434,9 @@ v_points_two : v_point v_point {
 
 value : INT  {  Value* v = (Value*)malloc(sizeof(Value));
                v->val = $1;
-               v->var = NULL; // so we know this is an INTeger
+               v->var = NULL;
                $$ = v; }
      | VAR_NAME {
-       printf("vat %s", $1);
                Value *v = (Value*)malloc(sizeof(Value));
                v->var = $1;
                $$ = v; }
