@@ -7,7 +7,7 @@
 
 NEW|new     { return NEW; }
 LOAD|load     { return LOAD; }
-LINE|load     { return LINE; }
+LINE|line     { return LINE; }
 SAVE|save     { return SAVE; }
 COLOR|color     { return COLOR; }
 POINT|point     { return POINT; }
