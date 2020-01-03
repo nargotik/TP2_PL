@@ -398,7 +398,7 @@ instruction : NEW v_dimension EOC {
                 NULL, /*Colours*/
                 $5, /*Val*/
                 $7, /*Val1*/
-                parseValue(0,$2), /*str1*/ //@todo $2
+                parseValue(0,$2), /*str1*/
                 NULL, /*str2*/
                 $10 /*next*/
                 );

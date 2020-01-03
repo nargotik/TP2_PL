@@ -5,20 +5,100 @@
 #include <math.h>
 #include "../src/imageraster.h"
 
-// img_data = malloc((3 * x_dim * y_dim) * sizeof(int));
-
-void writePoint(int *img_in, int x, int y, int r, int g, int b) {
-    //img_in[3*(i*x_size+j)+0] = r;
-    //img_in[3*(i*x_size+j)+1] = g;
-    //img_in[3*(i*x_size+j)+2] = b;
+int min(int a, int b) {
+    return (a < b) ? a : b;
 }
+
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+void drawPoint(int *img_in, int x_size, int y_size, int x, int y, int r, int g, int b) {
+    if (x > x_size || y > x_size || x<=0 || y<=0)
+        return;
+    int imageindex = getArrayIndex(x,y,x_size,y_size);
+    img_in[imageindex] = r;
+    img_in[imageindex + 1] = g;
+    img_in[imageindex + 2] = b;
+    fprintf(stderr,"\nPoint %d on %d x %d writed color %d,%d,%d", imageindex,x,y,r,g,b);
+
+    int calculated_x,calculated_y;
+
+    getImagePosition(imageindex,x_size,y_size,&calculated_x,&calculated_y);
+    fprintf(stderr,"\ncalculated %d,%d to %d\n", calculated_x,calculated_y,imageindex);
+    getImagePosition(imageindex+1,x_size,y_size,&calculated_x,&calculated_y);
+    fprintf(stderr,"\ncalculated %d,%d to %d\n", calculated_x,calculated_y,imageindex+1);
+    getImagePosition(imageindex+2,x_size,y_size,&calculated_x,&calculated_y);
+    fprintf(stderr,"\ncalculated %d,%d to %d\n", calculated_x,calculated_y,imageindex+2);
+
+}
+
+void drawCircle(int *img_in, int x_size, int y_size,int raio,int x, int y, int r, int g, int b) {
+    float step = 0.001;
+    float theta = 0;
+    for ( ; theta <= 2 * M_PI; theta += step) {
+        int x_next = (int)(cos(theta) * raio + x);
+        int y_next = (int)(sin(theta) * raio + x);
+
+    }
+}
+
+void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y2, int r, int g, int b) {
+    printf("%d > %d--",(x1-x2) , (y1-y2));
+    if ((x1-x2) > (y1-y2)) {
+        int xmin = min(x1,x2);
+        int xmax = max(x1,x2);
+        float m = (y2-y1)/(x2-x1);
+        float b = y1 - m * x1;
+        for (int x=xmin;x<= xmax;x++) {
+            int y = m * x + b;
+            drawPoint(img_in,x_size,y_size,x,y,r,g,b);
+        };
+    } else if ((x1-x2) <= (y1-y2)) {
+        int ymin = min(y1,y2);
+        int ymax = max(y1,y2);
+        float m = (y2-y1)/(x2-x1);
+        float b = y1 - m * x1;
+        for (int y=ymin;y<= ymax;y++) {
+            int x = (y-b)/m;
+            drawPoint(img_in,x_size,y_size,x,y,r,g,b);
+        }
+    }
+}
+
+/**
+ *
+ * @param x coordenada a encontrar
+ * @param y coordenada a encontrar
+ * @param x_size tamanho em x da imagem
+ * @param y_size tamanho em y da imagem
+ * @return
+ */
+int getArrayIndex(int x, int y, int x_size, int y_size) {
+    return (x + ((y - 1) * x_size)) * 3 - 3;
+}
+
+/**
+ *
+ * @param position
+ * @param x_size
+ * @param y_size
+ * @param x
+ * @param y
+ */
+void getImagePosition(int position, int x_size, int y_size ,int *x, int *y) {
+    position = position / 3 ;
+    *y = (position) / x_size + 1;
+    *x = (position) % x_size + 1;
+}
+
 
 int *create_ppm_memory(int x, int y) {
     return malloc((3 * x * y) * sizeof(int));
 }
 
 void imageFill(int *img_in, int x_size, int y_size, int r, int g, int b) {
-    printf("Painting %d - %d - %d",r,g,b);
+
     for (int i = 0; i < y_size; i++) {
         for (int j = 0; j < x_size; j++) {
             img_in[3*(i*x_size+j)+0] = r;

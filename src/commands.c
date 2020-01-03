@@ -109,9 +109,9 @@ int evalValue(VarList *lst, Value *val) {
 
 Image *newImage() {
     Image *image = (Image*) malloc(sizeof(Image));
-    image->r = 255;
-    image->g = 255;
-    image->b = 255;
+    image->r = 0;
+    image->g = 0;
+    image->b = 0;
     image->x_size = 1;
     image->y_size = 1;
     image->vars = NULL;  // No variables defined so far...
@@ -129,9 +129,15 @@ void runCommands(Command *lst, Image *image) {
     if (!lst) return;
     switch(lst->command) {
         case FOR:
-            printf("repeat %d [\n", lst->val->val);
-            runCommands(lst->child , image);
-            printf("]\n");
+            {
+                // @done
+                int from = evalValue(image->vars, lst->val);
+                int to   = evalValue(image->vars, lst->val2);
+                for (int var=from; var<=to ;var++) {
+                    image->vars = updateVar(image->vars, lst->str->var, var);
+                    runCommands(lst->child , image);
+                }
+            }
             break;
         case NEW:
         {
@@ -145,9 +151,9 @@ void runCommands(Command *lst, Image *image) {
             }
 
             // get rgb background value, default 0,0,0
-            int r = (lst->color == NULL) ? 0 : evalValue(image->vars, &lst->color->r);
-            int g = (lst->color == NULL) ? 0 : evalValue(image->vars, &lst->color->g);
-            int b = (lst->color == NULL) ? 0 : evalValue(image->vars, &lst->color->b);
+            int r = (lst->color == NULL) ? 255 : evalValue(image->vars, &lst->color->r);
+            int g = (lst->color == NULL) ? 255 : evalValue(image->vars, &lst->color->g);
+            int b = (lst->color == NULL) ? 255 : evalValue(image->vars, &lst->color->b);
 
             // rgb cannot be bigger than 255
             r = (r>255) ? 255 : r;
@@ -158,7 +164,7 @@ void runCommands(Command *lst, Image *image) {
 
             // fill image with background color
             imageFill(image->img_data,image->x_size,image->y_size,r,g,b);
-            fprintf(stderr,"\nNEW =>\n");
+            // fprintf(stderr,"\nNEW =>\n");
         }
             break;
         case COLOR:
@@ -207,20 +213,37 @@ void runCommands(Command *lst, Image *image) {
             break;
         case POINT:
         {
+            // @done
+
             // get rgb colour value, default def_r,def_g,def_b
             int r = (lst->color == NULL) ? image->r : evalValue(image->vars, &lst->color->r);
             int g = (lst->color == NULL) ? image->g : evalValue(image->vars, &lst->color->g);
             int b = (lst->color == NULL) ? image->b : evalValue(image->vars, &lst->color->b);
-            printf("\nPOINT =>\n");
+
+            int x = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->x);
+            int y = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->y);
+
+            drawPoint(image->img_data,image->x_size,image->y_size,x,y,r,g,b);
+
         }
             break;
         case LINE:
         {
+            // @done
             // get rgb colour value, default def_r,def_g,def_b
             int r = (lst->color == NULL) ? image->r : evalValue(image->vars, &lst->color->r);
             int g = (lst->color == NULL) ? image->g : evalValue(image->vars, &lst->color->g);
             int b = (lst->color == NULL) ? image->b : evalValue(image->vars, &lst->color->b);
-            printf("LINE =>");
+
+            int x1 = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->x);
+            int y1 = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->y);
+
+            int x2 = (lst->point->next == NULL) ? 1 : evalValue(image->vars, &lst->point->next->x);
+            int y2 = (lst->point->next == NULL) ? 1 : evalValue(image->vars, &lst->point->next->y);
+
+
+            drawLine(image->img_data,image->x_size,image->y_size,x1,y1,x2,y2,r,g,b);
+
         }
             break;
         case RECT:
@@ -241,15 +264,6 @@ void runCommands(Command *lst, Image *image) {
             printf("RECTFILL =>");
         }
             break;
-        case CIRC:
-        {
-            // get rgb colour value, default def_r,def_g,def_b
-            int r = (lst->color == NULL) ? image->r : evalValue(image->vars, &lst->color->r);
-            int g = (lst->color == NULL) ? image->g : evalValue(image->vars, &lst->color->g);
-            int b = (lst->color == NULL) ? image->b : evalValue(image->vars, &lst->color->b);
-            printf("CIRC =>");
-        };
-            break;
         case POLYLINE:
         {
             // get rgb colour value, default def_r,def_g,def_b
@@ -258,6 +272,23 @@ void runCommands(Command *lst, Image *image) {
             int b = (lst->color == NULL) ? image->b : evalValue(image->vars, &lst->color->b);
             printf("POLYLINE =>");
         }
+            break;
+        case CIRC:
+        {
+            // @done
+            // get rgb colour value, default def_r,def_g,def_b
+            int r = (lst->color == NULL) ? image->r : evalValue(image->vars, &lst->color->r);
+            int g = (lst->color == NULL) ? image->g : evalValue(image->vars, &lst->color->g);
+            int b = (lst->color == NULL) ? image->b : evalValue(image->vars, &lst->color->b);
+
+            int x = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->x);
+            int y = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->y);
+
+            int raio = (lst->val == NULL) ? 1 : evalValue(image->vars, lst->val);
+
+            drawCircle(image->img_data,image->x_size,image->y_size, raio,x,y,r,g,b);
+
+        };
             break;
         case ATTRIB:
             {
