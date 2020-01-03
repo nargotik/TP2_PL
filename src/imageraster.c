@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -6,35 +7,38 @@
 #include "../src/imageraster.h"
 
 /**
- *
- * @param a
- * @param b
- * @return
+ * @brief
+ * Devolve o minimo de dois inteiros
+ * @param a inteiro 1
+ * @param b inteiro 2
+ * @return minimo ente a e b
  */
 int min(int a, int b) {
     return (a < b) ? a : b;
 }
 
 /**
- *
- * @param a
- * @param b
- * @return
+ * @brief
+ * Devolve o máximo de dois inteiros
+ * @param a inteiro 1
+ * @param b inteiro 2
+ * @return máximo ente a e b
  */
 int max(int a, int b) {
     return (a > b) ? a : b;
 }
 
 /**
- *
- * @param img_in
- * @param x_size
- * @param y_size
- * @param x
- * @param y
- * @param r
- * @param g
- * @param b
+ * @brief
+ * Desenha um pixel na imagem
+ * @param img_in array da imagem
+ * @param x_size tamanho da imagem em x
+ * @param y_size tamanho da imagem em y
+ * @param x ponto em x
+ * @param y ponto em y
+ * @param r cor vermelha
+ * @param g cor verde
+ * @param b cor azul
  */
 void drawPoint(int *img_in, int x_size, int y_size, int x, int y, int r, int g, int b) {
     if (x > x_size || y > x_size || x<=0 || y<=0)
@@ -46,16 +50,18 @@ void drawPoint(int *img_in, int x_size, int y_size, int x, int y, int r, int g, 
 }
 
 /**
- *
- * @param img_in
- * @param x_size
- * @param y_size
- * @param raio
- * @param x
- * @param y
- * @param r
- * @param g
- * @param b
+ * @brief
+ * Desenha um circulo com um raio desde o ponto x e y
+ * @see drawPoint
+ * @param img_in array dos pixels da imagem
+ * @param x_size tamanho da imagem em x
+ * @param y_size tamanho da imagem em y
+ * @param raio raio do circulo
+ * @param x coordenada x do centro
+ * @param y coordenada y do centro
+ * @param r cor vermelha
+ * @param g cor verde
+ * @param b cor azul
  */
 void drawCircle(int *img_in, int x_size, int y_size,int raio,int x, int y, int r, int g, int b) {
     float step = 0.001;
@@ -68,17 +74,19 @@ void drawCircle(int *img_in, int x_size, int y_size,int raio,int x, int y, int r
 }
 
 /**
- *
- * @param img_in
- * @param x_size
- * @param y_size
- * @param x1
- * @param y1
- * @param x2
- * @param y2
- * @param c_r
- * @param c_g
- * @param c_b
+ * @brief
+ * Desenha uma linha entre dois pontos x1,y1 x2,y2
+ * @see drawPoint
+ * @param img_in array dos pixels da imagem
+ * @param x_size tamanho da imagem em x
+ * @param y_size tamanho da imagem em y
+ * @param x1 coordenada x1
+ * @param y1 coordenada y1
+ * @param x2 coordenada x2
+ * @param y2 coordenada y2
+ * @param c_r cor vermelha
+ * @param c_g cor verde
+ * @param c_b cor azul
  */
 void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y2, int c_r, int c_g, int c_b) {
     //printf("%d > %d--",(x1-x2) , (y1-y2));
@@ -104,24 +112,28 @@ void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y
 }
 
 /**
- *
+ * @brief
+ * Devolve o index no array para uma determinada coordenada.
+ * @see getImagePosition
  * @param x coordenada a encontrar
  * @param y coordenada a encontrar
  * @param x_size tamanho em x da imagem
  * @param y_size tamanho em y da imagem
- * @return
+ * @return inteiro do indice no array correspondente
  */
 int getArrayIndex(int x, int y, int x_size, int y_size) {
     return (x + ((y - 1) * x_size)) * 3 - 3;
 }
 
 /**
- *
- * @param position
- * @param x_size
- * @param y_size
- * @param x
- * @param y
+ * @brief
+ * Devolve a coordenada x e y para um determinado posicao no array
+ * @see getArrayIndex
+ * @param position inteiro da posicao no array
+ * @param x_size tamanho em x da imagem
+ * @param y_size tamanho em y da imagem
+ * @param x *POINTER - coordenada x devolvida por ref
+ * @param y *POINTER - coordenada y devolvida por ref
  */
 void getImagePosition(int position, int x_size, int y_size ,int *x, int *y) {
     position = position / 3 ;
@@ -130,23 +142,14 @@ void getImagePosition(int position, int x_size, int y_size ,int *x, int *y) {
 }
 
 /**
- *
- * @param x
- * @param y
- * @return
- */
-int *create_ppm_memory(int x, int y) {
-    return malloc((3 * x * y) * sizeof(int));
-}
-
-/**
- *
- * @param img_in
- * @param x_size
- * @param y_size
- * @param r
- * @param g
- * @param b
+ * @brief
+ * Preenche uma imagem completa com uma cor (utilizado para fazer backgrouds)
+ * @param img_in img_in array dos pixels da imagem
+ * @param x_size tamanho da imagem em x
+ * @param y_size tamanho da imagem em y
+ * @param r cor vermelha
+ * @param g cor verde
+ * @param b cor azul
  */
 void imageFill(int *img_in, int x_size, int y_size, int r, int g, int b) {
 
@@ -160,9 +163,12 @@ void imageFill(int *img_in, int x_size, int y_size, int r, int g, int b) {
 }
 
 /**
- *
- * @param f
- * @param img_in
+ * @brief
+ * Le a informação da imagem
+ * Esta funcao deve ser executada depois da readImageHeader
+ * @see readImageHeader
+ * @param f file pointer
+ * @param img_in img_in array dos pixels da imagem
  */
 void readImage(FILE *f, int *img_in)
 {
@@ -184,10 +190,11 @@ void readImage(FILE *f, int *img_in)
 }
 
 /**
- *
- * @param f
- * @param x_size
- * @param y_size
+ * @brief
+ * Le o cabeçalho de uma imagem ficheiro e devolve o x_size e y_size
+ * @param f file pointer
+ * @param x_size *POINTER - tamanho da imagem em x
+ * @param y_size *POINTER - tamanho da imagem em y
  */
 void readImageHeader(FILE *f, int *x_size, int *y_size)
 {
@@ -236,12 +243,13 @@ void readImageHeader(FILE *f, int *x_size, int *y_size)
 }
 
 /**
- *
- * @param f
- * @param img_out
- * @param img_out_fname
- * @param x_size
- * @param y_size
+ * @brief
+ * Grava num ficheiro uma imagem
+ * @param f file pointer
+ * @param img_out array dos pixels da imagem
+ * @param img_out_fname nome que damos à imagem (usado para comentario)
+ * @param x_size tamanho da imagem em x
+ * @param y_size tamanho da imagem em y
  */
 void writeImage(FILE *f, int *img_out, char *img_out_fname, int x_size, int y_size)
 {
