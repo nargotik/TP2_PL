@@ -53,7 +53,7 @@ No ficheiro por nós desenvolvido, o preâmbulo é constituído pela inclusão d
 
 A segunda parte, o corpo, é a zona na qual estão definidas as expressões regulares, assim como as ações semânticas que poderão ser despoletadas aquando do eventual reconhecimento de um *token*.
 
-```c
+```flex
 %%
 
 NEW|new     { return NEW; }
