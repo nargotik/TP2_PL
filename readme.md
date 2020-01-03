@@ -91,8 +91,15 @@ x { return CRUZ; }
 
 %%
 ```
+Na nossa implementação, o corpo é constituído por expressões regulares que permitem reconhecer em *Ignore Case Sensitive* as diversas instruções e caracteres especiais utilizados pela nossa implementação de desenho de imagens em Rasper.
 
 
+A terceira parte é destinada para as funções adicionais necessárias para o bom funcionamento do analisador léxico.
+
+```c
+int yywrap() { return 1; }
+```
+Nesta implementação, foi definida a função **yywrap()** que retorna 1 e que passa a informação ao analisador léxico que estamos na presença de EOF (End Of File).
 
 ## Estrutura do Bison
 
@@ -105,4 +112,4 @@ x { return CRUZ; }
 ## Bibliografia / Referências
 
 - [GitHub Flex](https://github.com/westes/flex)
-- [http://web.eecs.utk.edu/~bvanderz/teaching/cs461Sp11/notes/bison/](http://web.eecs.utk.edu/~bvanderz/teaching/cs461Sp11/notes/bison/)
+- [Bison Lecture](http://web.eecs.utk.edu/~bvanderz/teaching/cs461Sp11/notes/bison/)
