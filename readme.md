@@ -107,7 +107,8 @@ Nesta implementação, foi definida a função **yywrap()** que retorna 1 e que 
 
 ## Conclusão
 
-@todo
+Neste este trabalho, surgiu uma necessidade acrescida ao nível de conhecimento abordado em outras cadeira para a implementação de uma solução conforme pedido no enunciado. Como referido, a cadeira de SOSD foi uma ferramenta importante para a implementação de comandos usados tais como o interpretador. Contudo com ajuda do flex, bison e de uma biblioteca com funções necessárias para a implementação do software de desenho com imagens em Raster. Apesar dos inúmeros formatos pedidos, todas esta gestão só foi possível com uma estrutura bem delineada a nível de código C, para que os ficheiros sejam gerados corretamente sem nenhuma perda de dados.
+Em suma, pensamos ter cumprido com rigor aquilo a que este trabalho nos implicou ao nivel de conhecimento teórico e prático na disciplina de processamento de linguagens.
 
 ## Bibliografia / Referências
 
