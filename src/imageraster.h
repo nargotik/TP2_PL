@@ -14,6 +14,6 @@ void drawPoint(int *img_in, int x_size, int y_size, int x, int y, int r, int g, 
 void drawCircle(int *img_in, int x_size, int y_size,int raio,int x, int y, int r, int g, int b);
 int max(int a, int b);
 int min(int a, int b);
-void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y2, int r, int g, int b);
+void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y2, int c_r, int c_g, int c_b);
 
 #endif /* IMGRASTER_H */

@@ -7,6 +7,13 @@
 #include "../src/imageraster.h"
 #include "../include/grammar.tab.h"
 
+/**
+ *
+ * @param r
+ * @param g
+ * @param b
+ * @return
+ */
 Colour *parseColour(Value *r, Value *g, Value *b) {
      Colour* v = (Colour*)malloc(sizeof(Colour));
      v->r = *r;
@@ -15,6 +22,12 @@ Colour *parseColour(Value *r, Value *g, Value *b) {
      return v;
 }
 
+/**
+ *
+ * @param x
+ * @param y
+ * @return
+ */
 Dimension *parseDimension(Value *x, Value *y) {
      Dimension* v = (Dimension*)malloc(sizeof(Dimension));
      v->x = *x;
@@ -22,6 +35,13 @@ Dimension *parseDimension(Value *x, Value *y) {
      return v;
 }
 
+/**
+ *
+ * @param lst
+ * @param x
+ * @param y
+ * @return
+ */
 Point *parsePoint(Point *lst, Value *x, Value *y) {
      Point* v = (Point*)malloc(sizeof(Point));
      v->x = *x;
@@ -30,6 +50,12 @@ Point *parsePoint(Point *lst, Value *x, Value *y) {
      return v;
 }
 
+/**
+ *
+ * @param val
+ * @param str
+ * @return
+ */
 Value *parseValue(int val, char* str) {
     Value* v = (Value*)malloc(sizeof(Value));
      v->val = val;
@@ -37,17 +63,21 @@ Value *parseValue(int val, char* str) {
      return v;
 }
 
-Command* newCommand(
-  int command,
-  Point *pt,
-  Dimension *dim,
-  Colour *col,
-  Value *val,
-  Value *val2 ,
-  Value *str,
-  Value *str2,
-  Command *child
-) {
+/**
+ *
+ * @param command
+ * @param pt
+ * @param dim
+ * @param col
+ * @param val
+ * @param val2
+ * @param str
+ * @param str2
+ * @param child
+ * @return
+ */
+Command* newCommand(int command,Point *pt,Dimension *dim,Colour *col,Value *val,Value *val2 ,Value *str,Value *str2,Command *child)
+{
     Command *node = (Command*) malloc (sizeof(Command));
     node->command = command;
     node->point = pt;
@@ -62,11 +92,24 @@ Command* newCommand(
     return node;
 }
 
+/**
+ *
+ * @param lst
+ * @param cmd
+ * @return
+ */
 Command* insertCommand(Command *lst, Command *cmd) {
     cmd->next = lst;
     return cmd;
 }
 
+/**
+ *
+ * @param lst
+ * @param varName
+ * @param varValue
+ * @return
+ */
 VarList* updateVar(VarList *lst, char *varName, int varValue) {
     if (lst == NULL) {
         lst = (VarList*) malloc(sizeof(VarList));
@@ -85,6 +128,12 @@ VarList* updateVar(VarList *lst, char *varName, int varValue) {
     return lst;
 }
 
+/**
+ *
+ * @param lst
+ * @param varName
+ * @return
+ */
 int evalVar(VarList *lst, char *varName) {
     if (lst == NULL) {
         fprintf(stderr, "Variable %s is undefined\n", varName);
@@ -97,6 +146,12 @@ int evalVar(VarList *lst, char *varName) {
     }
 }
 
+/**
+ *
+ * @param lst
+ * @param val
+ * @return
+ */
 int evalValue(VarList *lst, Value *val) {
 
     if (val->var == NULL) {
@@ -107,6 +162,10 @@ int evalValue(VarList *lst, Value *val) {
     }
 }
 
+/**
+ *
+ * @return
+ */
 Image *newImage() {
     Image *image = (Image*) malloc(sizeof(Image));
     image->r = 0;
@@ -118,12 +177,20 @@ Image *newImage() {
     return image;
 }
 
+/**
+ *
+ * @param lst
+ */
 void Run(Command *lst) {
     Image *image = newImage();
     runCommands(lst, image);
 }
 
-
+/**
+ *
+ * @param lst
+ * @param image
+ */
 void runCommands(Command *lst, Image *image) {
 
     if (!lst) return;
@@ -311,7 +378,12 @@ void runCommands(Command *lst, Image *image) {
     runCommands(lst->next, image);
 }
 
-
+/**
+ *
+ * @param min
+ * @param max
+ * @return
+ */
 int gera_random(int min, int max) {
     int numero_aleatorio;
     srand((unsigned) time(NULL));
@@ -320,58 +392,7 @@ int gera_random(int min, int max) {
 }
 
 
-void DrawCommand(Command *lst, Turtle *turtle) {
-    if (!lst) return; // no more commands to process
 
-    /*switch (lst->command) {
-
-        case MAKE:
-           {
-              // MAKE "var1 :var2
-              // MAKE "var1 3243
-              float value = evalValue(turtle->vars, lst->arg2);
-              turtle->vars = updateVar(turtle->vars, lst->arg->var, value);
-           }
-           break;
-
-        case RIGHT:
-           {
-               // RIGHT 50
-               // RIGHT :var1
-               float argVal = evalValue(turtle->vars, lst->arg);
-               turtle->rot -= argVal * 2 * M_PI / 360;
-           }
-           break;
-
-        case FORWARD:
-           {
-               // FORWARD 50
-               // FORWARD :var1
-               float argVal = evalValue(turtle->vars, lst->arg);
-               float x2 =  cos(turtle->rot) * argVal + turtle->x;
-               float y2 = -sin(turtle->rot) * argVal + turtle->y;
-               printf(
-                   "<line x1='%f' y1='%f' x2='%f' y2='%f' style='stroke:black'/>\n",
-                   turtle->x, turtle->y, x2, y2);
-               turtle->x = x2;
-               turtle->y = y2;
-           }
-           break;
-
-       case REPEAT:
-           {
-               // REPEAT 50 [ ... ]
-               // REPEAT :var1 [ ... ]
-               float argVal = evalValue(turtle->vars, lst->arg);
-               for (int i = 0; i < argVal; i++)
-                   DrawCommand(lst->child, turtle);
-           }
-           break;
-    }
-
-    DrawCommand(lst->next, turtle);
-    */
-}
 
 
 

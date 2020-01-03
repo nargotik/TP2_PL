@@ -5,14 +5,37 @@
 #include <math.h>
 #include "../src/imageraster.h"
 
+/**
+ *
+ * @param a
+ * @param b
+ * @return
+ */
 int min(int a, int b) {
     return (a < b) ? a : b;
 }
 
+/**
+ *
+ * @param a
+ * @param b
+ * @return
+ */
 int max(int a, int b) {
     return (a > b) ? a : b;
 }
 
+/**
+ *
+ * @param img_in
+ * @param x_size
+ * @param y_size
+ * @param x
+ * @param y
+ * @param r
+ * @param g
+ * @param b
+ */
 void drawPoint(int *img_in, int x_size, int y_size, int x, int y, int r, int g, int b) {
     if (x > x_size || y > x_size || x<=0 || y<=0)
         return;
@@ -20,31 +43,45 @@ void drawPoint(int *img_in, int x_size, int y_size, int x, int y, int r, int g, 
     img_in[imageindex] = r;
     img_in[imageindex + 1] = g;
     img_in[imageindex + 2] = b;
-    fprintf(stderr,"\nPoint %d on %d x %d writed color %d,%d,%d", imageindex,x,y,r,g,b);
-
-    int calculated_x,calculated_y;
-
-    getImagePosition(imageindex,x_size,y_size,&calculated_x,&calculated_y);
-    fprintf(stderr,"\ncalculated %d,%d to %d\n", calculated_x,calculated_y,imageindex);
-    getImagePosition(imageindex+1,x_size,y_size,&calculated_x,&calculated_y);
-    fprintf(stderr,"\ncalculated %d,%d to %d\n", calculated_x,calculated_y,imageindex+1);
-    getImagePosition(imageindex+2,x_size,y_size,&calculated_x,&calculated_y);
-    fprintf(stderr,"\ncalculated %d,%d to %d\n", calculated_x,calculated_y,imageindex+2);
-
 }
 
+/**
+ *
+ * @param img_in
+ * @param x_size
+ * @param y_size
+ * @param raio
+ * @param x
+ * @param y
+ * @param r
+ * @param g
+ * @param b
+ */
 void drawCircle(int *img_in, int x_size, int y_size,int raio,int x, int y, int r, int g, int b) {
     float step = 0.001;
     float theta = 0;
     for ( ; theta <= 2 * M_PI; theta += step) {
         int x_next = (int)(cos(theta) * raio + x);
         int y_next = (int)(sin(theta) * raio + x);
-
+        drawPoint(img_in,x_size,y_size,x_next,y_next,r,g,b);
     }
 }
 
-void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y2, int r, int g, int b) {
-    printf("%d > %d--",(x1-x2) , (y1-y2));
+/**
+ *
+ * @param img_in
+ * @param x_size
+ * @param y_size
+ * @param x1
+ * @param y1
+ * @param x2
+ * @param y2
+ * @param c_r
+ * @param c_g
+ * @param c_b
+ */
+void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y2, int c_r, int c_g, int c_b) {
+    //printf("%d > %d--",(x1-x2) , (y1-y2));
     if ((x1-x2) > (y1-y2)) {
         int xmin = min(x1,x2);
         int xmax = max(x1,x2);
@@ -52,7 +89,7 @@ void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y
         float b = y1 - m * x1;
         for (int x=xmin;x<= xmax;x++) {
             int y = m * x + b;
-            drawPoint(img_in,x_size,y_size,x,y,r,g,b);
+            drawPoint(img_in,x_size,y_size,x,y,c_r,c_g,c_b);
         };
     } else if ((x1-x2) <= (y1-y2)) {
         int ymin = min(y1,y2);
@@ -61,7 +98,7 @@ void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y
         float b = y1 - m * x1;
         for (int y=ymin;y<= ymax;y++) {
             int x = (y-b)/m;
-            drawPoint(img_in,x_size,y_size,x,y,r,g,b);
+            drawPoint(img_in,x_size,y_size,x,y,c_r,c_g,c_b);
         }
     }
 }
@@ -92,11 +129,25 @@ void getImagePosition(int position, int x_size, int y_size ,int *x, int *y) {
     *x = (position) % x_size + 1;
 }
 
-
+/**
+ *
+ * @param x
+ * @param y
+ * @return
+ */
 int *create_ppm_memory(int x, int y) {
     return malloc((3 * x * y) * sizeof(int));
 }
 
+/**
+ *
+ * @param img_in
+ * @param x_size
+ * @param y_size
+ * @param r
+ * @param g
+ * @param b
+ */
 void imageFill(int *img_in, int x_size, int y_size, int r, int g, int b) {
 
     for (int i = 0; i < y_size; i++) {
@@ -108,6 +159,11 @@ void imageFill(int *img_in, int x_size, int y_size, int r, int g, int b) {
     }
 }
 
+/**
+ *
+ * @param f
+ * @param img_in
+ */
 void readImage(FILE *f, int *img_in)
 {
     int i=0, c;
@@ -127,6 +183,12 @@ void readImage(FILE *f, int *img_in)
     fclose(f);
 }
 
+/**
+ *
+ * @param f
+ * @param x_size
+ * @param y_size
+ */
 void readImageHeader(FILE *f, int *x_size, int *y_size)
 {
   int flag=0;
@@ -173,6 +235,14 @@ void readImageHeader(FILE *f, int *x_size, int *y_size)
   *y_size   = y_val;
 }
 
+/**
+ *
+ * @param f
+ * @param img_out
+ * @param img_out_fname
+ * @param x_size
+ * @param y_size
+ */
 void writeImage(FILE *f, int *img_out, char *img_out_fname, int x_size, int y_size)
 {
   int i, j;

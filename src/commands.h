@@ -44,10 +44,6 @@ typedef struct _Command {
     struct _Command *child;
 } Command;
 
-typedef struct _Turtle {
-    float x, y, rot;
-    VarList *vars;
-} Turtle;
 
 typedef struct _Image {
     int r,g,b;
