@@ -1,0 +1,9 @@
+NEW 100x100 255:255:255;
+COLOR 0:0:0;
+RECT 1,1 100x100;
+FOR t IN [1..10] DO
+p1 = RAND 50;
+p2 = RAND 50;
+CIRC p1,p2 t;
+END FOR;
+SAVE "bar.pnm";

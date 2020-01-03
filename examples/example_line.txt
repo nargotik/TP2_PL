@@ -1,0 +1,4 @@
+NEW 100x100;
+LINE 1,1 100,100;
+LINE 1,100 100,1;
+SAVE "bar.pnm";

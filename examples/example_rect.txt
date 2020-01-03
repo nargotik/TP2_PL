@@ -1,0 +1,4 @@
+NEW 100x100 255:255:255;
+COLOR 0:0:0;
+RECT 3,3 50x50;                      
+SAVE "bar.pnm";

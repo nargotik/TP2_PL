@@ -315,24 +315,71 @@ void runCommands(Command *lst, Image *image) {
             break;
         case RECT:
         {
+            // @done
             // get rgb colour value, default def_r,def_g,def_b
+
             int r = (lst->color == NULL) ? image->r : evalValue(image->vars, &lst->color->r);
             int g = (lst->color == NULL) ? image->g : evalValue(image->vars, &lst->color->g);
             int b = (lst->color == NULL) ? image->b : evalValue(image->vars, &lst->color->b);
-            printf("RECT =>");
+
+
+            int x1 = evalValue(image->vars, &lst->point->x);
+            int y1 = evalValue(image->vars, &lst->point->y);
+
+            int x2 = (lst->dimension == NULL) ?
+                    evalValue(image->vars, &lst->point->next->x)
+                    : x1 + evalValue(image->vars, &lst->dimension->x) - 1
+                    ;
+            int y2 = (lst->dimension == NULL) ?
+                    evalValue(image->vars, &lst->point->next->y)
+                    : y1 + evalValue(image->vars, &lst->dimension->y) - 1
+                    ;
+            //printf("%d %d %d %d %d %d %d xysize %d %d----",x1,y1,x2,y2,r,g,b,image->x_size,image->y_size);
+            //exit(1);
+            // Parte superior
+            drawLine(image->img_data,image->x_size,image->y_size,x2,y1,x1,y1,r,g,b);
+
+            // Lateral direita
+            drawLine(image->img_data,image->x_size,image->y_size,x2,y2,x2,y1,r,g,b);
+
+            // Baixo
+            drawLine(image->img_data,image->x_size,image->y_size,x2,y2,x1,y2,r,g,b);
+
+            // Lateral Equerda
+            drawLine(image->img_data,image->x_size,image->y_size,x1,y2,x1,y1,r,g,b);
+
         }
             break;
         case RECTFILL:
         {
+            // @done
             // get rgb colour value, default def_r,def_g,def_b
             int r = (lst->color == NULL) ? image->r : evalValue(image->vars, &lst->color->r);
             int g = (lst->color == NULL) ? image->g : evalValue(image->vars, &lst->color->g);
             int b = (lst->color == NULL) ? image->b : evalValue(image->vars, &lst->color->b);
-            printf("RECTFILL =>");
+
+            int x1 = evalValue(image->vars, &lst->point->x);
+            int y1 = evalValue(image->vars, &lst->point->y);
+
+            int x2 = (lst->dimension == NULL) ?
+                     evalValue(image->vars, &lst->point->next->x)
+                                              : x1 + evalValue(image->vars, &lst->dimension->x) -1
+            ;
+            int y2 = (lst->dimension == NULL) ?
+                     evalValue(image->vars, &lst->point->next->y)
+                                              : y1 + evalValue(image->vars, &lst->dimension->y)-1
+            ;
+
+            for (int i=y1; i<= y2; i++) {
+                // Parte superior
+                drawLine(image->img_data,image->x_size,image->y_size,x1,i,x2,i,r,g,b);
+            }
         }
             break;
         case POLYLINE:
         {
+            // @todo
+
             // get rgb colour value, default def_r,def_g,def_b
             int r = (lst->color == NULL) ? image->r : evalValue(image->vars, &lst->color->r);
             int g = (lst->color == NULL) ? image->g : evalValue(image->vars, &lst->color->g);
@@ -371,7 +418,7 @@ void runCommands(Command *lst, Image *image) {
                 // @done
                 int value = evalValue(image->vars, lst->val);
                 image->vars = updateVar(image->vars, lst->str->var, gera_random(0,value));
-                //printf("\n%s = %d\n", lst->str->var, evalValue(image->vars, lst->str));
+                printf("\n%s = %d . %d\n", lst->str->var, evalValue(image->vars, lst->str), gera_random(0,value));
             }
             break;
     }
@@ -385,10 +432,8 @@ void runCommands(Command *lst, Image *image) {
  * @return
  */
 int gera_random(int min, int max) {
-    int numero_aleatorio;
-    srand((unsigned) time(NULL));
-    numero_aleatorio = rand() % max + min;
-    return numero_aleatorio;
+    srand(time(0));
+    return rand() % max + min;
 }
 
 

@@ -1,0 +1,14 @@
+NEW 100x100 255:255:255;
+COLOR 0:0:0;
+RECT 1,1 100x100;
+FOR t IN [1..10] DO
+p1 = RAND 50;
+p2 = RAND 50;
+t1 = RAND 50;
+t2 = RAND 50;
+c1 = RAND 255;
+c2 = RAND 255;
+c3 = RAND 255;
+RECTFILL p1,p2 t1 x t2 c1:c2:c3;
+END FOR;
+SAVE "bar.pnm";
