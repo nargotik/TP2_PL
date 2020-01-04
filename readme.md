@@ -28,6 +28,8 @@ Para a realização deste trabalho foram utilizadas as ferramentas abaixo descri
 - Bison (Versão 3.0.4)
 
 
+@todo - Explicar o exercicio que adotamos
+
 ## Utilização/Compilação
 Para compilar as aplicações necessárias simplesmente é necessário efectuar o comando:
 ```shell script
@@ -38,7 +40,7 @@ $ make
 
 O flex é um software desenvolvido com  o intuito de permitir a análise léxica de um determinado conjunto de dados através do reconhecimento de sequências de caracteres ("tokens") definidas pelo programador.
 
-Um  ficheiro de bison é composto por três zonas delimitadas por **%%**
+Um  ficheiro de Flex é composto por três zonas delimitadas por **%%**
 
 A primeira parte, o preâmbulo, é o local onde se faz a inclusão das bibliotecas e da definição de conjuntos de caracteres.
 
@@ -92,7 +94,7 @@ x { return CRUZ; }
 %%
 ```
 Na nossa implementação, o corpo é constituído por expressões regulares que permitem reconhecer em *Ignore Case Sensitive* as diversas instruções e caracteres especiais utilizados pela nossa implementação de desenho de imagens em Rasper.
-
+Se for reconhecido algum dos *tokens* definidos no **lexer.l**, é retornado para o programa a devida função de C a ser invocada para tratar aquele comando.
 
 A terceira parte é destinada para as funções adicionais necessárias para o bom funcionamento do analisador léxico.
 
@@ -103,7 +105,12 @@ Nesta implementação, foi definida a função **yywrap()** que retorna 1 e que 
 
 ## Estrutura do Bison
 
-@todo
+O Bison é um software desenvolvido com  o intuito de permitir gerar automaticamente programas para análise sintática.
+Possui como entrada a declaração de uma gramática, que especifica uma linguagem e gera como saída o *parser* dessa linguagem.
+O *parser* gerado pelo Bison permite a validar os argumentos que lá são introduzidos, dizendo se os mesmos estão ou não sintaticamente corretos, segundo a gramática definida.
+
+@todo - Explicar a nossa abordagem;
+
 
 ## Conclusão
 
