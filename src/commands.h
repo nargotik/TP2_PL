@@ -70,6 +70,7 @@ Command* newVariable(char *variable, Value* value);
 // Inserts at the head of a list a command
 Command* insertCommand(Command *lst, Command *cmd);
 
+void append(Point* list, Point* dataParam);
 int gera_random(int min, int max);
 
 #endif /* COMMANDS_H */

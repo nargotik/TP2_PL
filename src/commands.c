@@ -384,6 +384,20 @@ void runCommands(Command *lst, Image *image) {
             int r = (lst->color == NULL) ? image->r : evalValue(image->vars, &lst->color->r);
             int g = (lst->color == NULL) ? image->g : evalValue(image->vars, &lst->color->g);
             int b = (lst->color == NULL) ? image->b : evalValue(image->vars, &lst->color->b);
+
+            while (lst->point->next != NULL) {
+                int x1 = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->x);
+                int y1 = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->y);
+
+                int x2 = (lst->point->next == NULL) ? 1 : evalValue(image->vars, &lst->point->next->x);
+                int y2 = (lst->point->next == NULL) ? 1 : evalValue(image->vars, &lst->point->next->y);
+
+                drawLine(image->img_data,image->x_size,image->y_size,x1,y1,x2,y2,r,g,b);
+
+                printf("LINE %d,%d  %d,%d;\n",x1,y1,x2,y2);
+                //iterate
+                lst->point = lst->point->next;
+            }
             printf("POLYLINE =>");
         }
             break;
@@ -418,7 +432,7 @@ void runCommands(Command *lst, Image *image) {
                 // @done
                 int value = evalValue(image->vars, lst->val);
                 image->vars = updateVar(image->vars, lst->str->var, gera_random(0,value));
-                printf("\n%s = %d . %d\n", lst->str->var, evalValue(image->vars, lst->str), gera_random(0,value));
+                //printf("\n%s = %d . %d\n", lst->str->var, evalValue(image->vars, lst->str), gera_random(0,value));
             }
             break;
     }
@@ -432,12 +446,7 @@ void runCommands(Command *lst, Image *image) {
  * @return
  */
 int gera_random(int min, int max) {
-    srand(time(0));
+
     return rand() % max + min;
 }
-
-
-
-
-
 

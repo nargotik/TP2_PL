@@ -41,8 +41,10 @@ int max(int a, int b) {
  * @param b cor azul
  */
 void drawPoint(int *img_in, int x_size, int y_size, int x, int y, int r, int g, int b) {
-    if (x > x_size || y > x_size || x<=0 || y<=0)
+    if (x > x_size || y > x_size || x<=0 || y<=0) {
         return;
+    }
+
     int imageindex = getArrayIndex(x,y,x_size,y_size);
     img_in[imageindex] = r;
     img_in[imageindex + 1] = g;
@@ -89,6 +91,7 @@ void drawCircle(int *img_in, int x_size, int y_size,int raio,int x, int y, int r
  * @param c_b cor azul
  */
 void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y2, int c_r, int c_g, int c_b) {
+    printf("(%d-%d) > (%d-%d) %d>%d",x1,x2,y1,y2,x1-x2,y1-y2);
     // Vertical
     if (x1 == x2) {
         int ymin = min(y1,y2);
@@ -103,24 +106,27 @@ void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y
         for (int x=xmin; x<=xmax; x++) {
             drawPoint(img_in,x_size,y_size,x,y1,c_r,c_g,c_b);
         }
-    } else if ((x1-x2) > (y1-y2)) {
+    } else if (abs(x1-x2) > abs(y1-y2)) {
         int xmin = min(x1,x2);
         int xmax = max(x1,x2);
         float m = (y2-y1)/(x2-x1);
         float b = y1 - m * x1;
-        for (int x=xmin;x<= xmax;x++) {
-            int y = m * x + b;
+        for (float x=xmin;x<= xmax;x += 0.01) {
+            float y = m * x + b;
             drawPoint(img_in,x_size,y_size,x,y,c_r,c_g,c_b);
         };
-    } else if ((x1-x2) < (y1-y2)) {
+        printf("-1-");
+    } else if (abs(x1-x2) <= abs(y1-y2)) {
+
         int ymin = min(y1,y2);
         int ymax = max(y1,y2);
         float m = (y2-y1)/(x2-x1);
         float b = y1 - m * x1;
-        for (int y=ymin;y<= ymax;y++) {
-            int x = (y-b)/m;
+        for (float y=ymin;y<= ymax;y += 0.01) {
+            float x = (y-b)/m;
             drawPoint(img_in,x_size,y_size,x,y,c_r,c_g,c_b);
         }
+        printf("-%d %d-2-", ymin,ymax);
     }
 }
 
@@ -249,7 +255,7 @@ void readImageHeader(FILE *f, int *x_size, int *y_size)
     exit(1);
   }
 
-  fprintf(stderr, "Info: magic=%s, x_val=%d, y_val=%d, maxcolors_val=%d\n",
+  fprintf(stderr, "Read: type=%s, x_size=%d, y_size=%d, maxcolors_val=%d\n",
     magic, x_val, y_val, maxcolors_val);
   *x_size   = x_val;
   *y_size   = y_val;

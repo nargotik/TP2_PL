@@ -329,10 +329,10 @@ instruction : NEW v_dimension EOC {
             }
             | POLYLINE v_point v_points_multiple v_colour EOC {
                 //  printf("POLYLINE WITH COLOR %d,%d  %d,%d\n" ,$2->x.val,$2->y.val,$3->x.val, $3->y.val);
-                  $2->next = $3;
+
                   $$ =   newCommand(
                     POLYLINE, /* Command*/
-                    $2, /*Point*/
+                    $3, /*Point*/
                     NULL,  /*Dimensions*/
                     $4, /*Colours*/
                     NULL, /*Val*/
@@ -341,6 +341,11 @@ instruction : NEW v_dimension EOC {
                     NULL, /*str2*/
                     NULL /*next*/
                     );
+                    // Acrescenta o ponto no final da lista
+                    while ($3->next != NULL) {
+                        $3 = $3->next;
+                    }
+                    $3->next = $2;
             }
             | VAR_NAME '=' value EOC {
               // COMMAND ATTRIB
@@ -422,8 +427,8 @@ v_points_multiple : v_point {
           $$ = $1;
       }
       | v_points_multiple v_point {
-          $1->next = $2;
-          $$ = $1;
+          $2->next = $1;
+          $$ = $2;
       }
       ;
 v_points_two : v_point v_point {
