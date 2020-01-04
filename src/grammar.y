@@ -27,7 +27,8 @@
    char *str;  // used for variable names
 }
 
-%token NEW LOAD SAVE COLOR POINT RECT RECTFILL CIRC POLYLINE EOC LINE RAND CRUZ FOR IN DO END TO ATTRIB ATTRIB_RAND
+%token NEW LOAD SAVE COLOR POINT RECT RECTFILL CIRC
+%token POLYLINE EOC LINE RAND CRUZ FOR IN DO END TO ATTRIB ATTRIB_RAND CIRCFILL
 %token<str> VAR_VALUE VAR_NAME FILE_NAME
 %token<num> INT
 
@@ -323,6 +324,34 @@ instruction : NEW v_dimension EOC {
                     NULL /*next*/
                     );
             }
+            | CIRCFILL v_point value EOC {
+                   //printf("CIRC WITH 1 POINT %d,%d  %d  %d:%d:%d\n" ,$2->x.val,$2->y.val,$3->val, $4->r.val, $4->g.val, $4->b.val);
+                   $$ =   newCommand(
+                     CIRCFILL, /* Command*/
+                     $2, /*Point*/
+                     NULL,  /*Dimensions*/
+                     NULL, /*Colours*/
+                     $3, /*Val*/
+                     NULL, /*Val1*/
+                     NULL, /*str1*/
+                     NULL, /*str2*/
+                     NULL /*next*/
+                     );
+             }
+            | CIRCFILL v_point value v_colour EOC {
+                   //printf("CIRC WITH 1 POINT %d,%d  %d  %d:%d:%d\n" ,$2->x.val,$2->y.val,$3->val, $4->r.val, $4->g.val, $4->b.val);
+                   $$ =   newCommand(
+                     CIRCFILL, /* Command*/
+                     $2, /*Point*/
+                     NULL,  /*Dimensions*/
+                     $4, /*Colours*/
+                     $3, /*Val*/
+                     NULL, /*Val1*/
+                     NULL, /*str1*/
+                     NULL, /*str2*/
+                     NULL /*next*/
+                     );
+             }
             | POLYLINE v_point v_points_multiple EOC {
                   //printf("POLYLINE NO COLOR %d,%d  %d,%d\n" ,$2->x.val,$2->y.val,$3->x.val, $3->y.val);
                   $2->next = $3;

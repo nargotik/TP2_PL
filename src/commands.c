@@ -403,7 +403,7 @@ void runCommands(Command *lst, Image *image) {
             break;
         case POLYLINE:
         {
-            // @todo
+            // @done
 
             // get rgb colour value, default def_r,def_g,def_b
             int r = (lst->color == NULL) ? image->r : evalValue(image->vars, &lst->color->r);
@@ -439,6 +439,26 @@ void runCommands(Command *lst, Image *image) {
             int raio = (lst->val == NULL) ? 1 : evalValue(image->vars, lst->val);
 
             drawCircle(image->img_data,image->x_size,image->y_size, raio,x,y,r,g,b);
+
+        };
+            break;
+        case CIRCFILL:
+        {
+            // @done
+            // get rgb colour value, default def_r,def_g,def_b
+            int r = (lst->color == NULL) ? image->r : evalValue(image->vars, &lst->color->r);
+            int g = (lst->color == NULL) ? image->g : evalValue(image->vars, &lst->color->g);
+            int b = (lst->color == NULL) ? image->b : evalValue(image->vars, &lst->color->b);
+
+            int x = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->x);
+            int y = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->y);
+
+            int raio = (lst->val == NULL) ? 1 : evalValue(image->vars, lst->val);
+            
+            for (int i=raio; i>0 ; i--) {
+                drawCircle(image->img_data,image->x_size,image->y_size, i,x,y,r,g,b);
+            }
+
 
         };
             break;

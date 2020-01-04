@@ -26,6 +26,7 @@ POINT|point     { return POINT; }
 RECT|rect     { return RECT; }
 RECTFILL|rectfill     { return RECTFILL; }
 CIRC|circ     { return CIRC; }
+CIRCFILL|circfill     { return CIRCFILL; }
 POLYLINE|polyline     { return POLYLINE; }
 FOR|for     { return FOR; }
 IN|in     { return IN; }

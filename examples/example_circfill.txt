@@ -1,0 +1,10 @@
+NEW 101x101;
+iradius = RAND 25;
+center = 51;
+CIRC center,center 50;
+COLOR 150:0:100;
+CIRCFILL center,center iradius;
+COLOR 255:0:0;
+POLYLINE 10,10 50,10 50,90 90,90;
+SAVE "foo.pnm";
+
