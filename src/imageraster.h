@@ -1,3 +1,15 @@
+/**
+ * @file imageraster.h
+ * @author
+ *  - José Moura <a13742|at|alunos.ipca.pt>
+ *  - Óscar Silva <a14383|at|alunos.ipca.pt>
+ *  - Daniel Filipe <a17442|at|alunos.ipca.pt>
+ * @date 01 Jan 2020
+ * @brief
+ * Contem as instruções necessárias para manipular imagem PNM
+ */
+
+
 #ifndef IMGRASTER_H
 #define IMGRASTER_H
 #define MAXLINE 1024

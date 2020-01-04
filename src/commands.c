@@ -1,3 +1,14 @@
+/**
+ * @file commands.c
+ * @author
+ *  - José Moura <a13742|at|alunos.ipca.pt>
+ *  - Óscar Silva <a14383|at|alunos.ipca.pt>
+ *  - Daniel Filipe <a17442|at|alunos.ipca.pt>
+ * @date 01 Jan 2020
+ * @brief
+ * Este ficheiro contem as instruções necessárias para executar os comandos vindos do grammar.y
+ */
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,10 +19,11 @@
 #include "../include/grammar.tab.h"
 
 /**
- *
- * @param r
- * @param g
- * @param b
+ * @brief
+ * Recebe 3 valores e cria uma estrutura de cor
+ * @param r valor da cor red
+ * @param g valor da cor gree
+ * @param b valor da cor blue
  * @return
  */
 Colour *parseColour(Value *r, Value *g, Value *b) {
@@ -23,9 +35,10 @@ Colour *parseColour(Value *r, Value *g, Value *b) {
 }
 
 /**
- *
- * @param x
- * @param y
+ * @brief
+ * Recebe 2 valores e devolve uma estrutura do tipo dimension (x x y)
+ * @param x valor de x
+ * @param y valor de y
  * @return
  */
 Dimension *parseDimension(Value *x, Value *y) {
@@ -36,10 +49,11 @@ Dimension *parseDimension(Value *x, Value *y) {
 }
 
 /**
- *
- * @param lst
- * @param x
- * @param y
+ * @brief
+ * Recebe 2 valores  de x e y e uma lista de pontos
+ * @param lst lista de pontos
+ * @param x valor do ponto em x a adicionar à lista
+ * @param y valor do ponto em y a adicionar à lista
  * @return
  */
 Point *parsePoint(Point *lst, Value *x, Value *y) {
@@ -51,9 +65,10 @@ Point *parsePoint(Point *lst, Value *x, Value *y) {
 }
 
 /**
- *
- * @param val
- * @param str
+ * @brief
+ * Cria uma estutura do tipo value dependendo se enviamos uma string ou um valor
+ * @param val valor inteiro
+ * @param str valor string
  * @return
  */
 Value *parseValue(int val, char* str) {
@@ -64,16 +79,17 @@ Value *parseValue(int val, char* str) {
 }
 
 /**
- *
- * @param command
- * @param pt
- * @param dim
- * @param col
- * @param val
- * @param val2
- * @param str
+ * @brief
+ * Função que cria um comando e o devolve
+ * @param command Inteiro que identifica o comando
+ * @param pt Pontos (1,2 3,4 5,6)
+ * @param dim Dimensoes (20x10)
+ * @param col Cor (r:g:b)
+ * @param val Um valor (Usado para variaveis ou valores inteiros)
+ * @param val2 Um outro Valor (Usado para variaveis ou valores inteiros)
+ * @param str Um valor string (Usado para comandos que necessitem de strings tipo LOAD e SAVE)
  * @param str2
- * @param child
+ * @param child Commandos encadeados neste
  * @return
  */
 Command* newCommand(int command,Point *pt,Dimension *dim,Colour *col,Value *val,Value *val2 ,Value *str,Value *str2,Command *child)
@@ -93,9 +109,10 @@ Command* newCommand(int command,Point *pt,Dimension *dim,Colour *col,Value *val,
 }
 
 /**
- *
- * @param lst
- * @param cmd
+ * @brief
+ * Recebe uma lista de comandos e um comando e insere o mesmo na lista
+ * @param lst Lista de Comandos
+ * @param cmd Nodo
  * @return
  */
 Command* insertCommand(Command *lst, Command *cmd) {
@@ -104,10 +121,11 @@ Command* insertCommand(Command *lst, Command *cmd) {
 }
 
 /**
- *
- * @param lst
- * @param varName
- * @param varValue
+ * @brief
+ * Altera o valor de uma variavel
+ * @param lst lista de variaveis
+ * @param varName nome da variavel
+ * @param varValue novo valor inteiro
  * @return
  */
 VarList* updateVar(VarList *lst, char *varName, int varValue) {
@@ -129,10 +147,11 @@ VarList* updateVar(VarList *lst, char *varName, int varValue) {
 }
 
 /**
- *
- * @param lst
- * @param varName
- * @return
+ * @brief
+ * Devolve o valor de uma variavel através do nome da mesma
+ * @param lst Lista de Variaveis
+ * @param varName Nome da Variavel
+ * @return Inteiro do valor da variavel
  */
 int evalVar(VarList *lst, char *varName) {
     if (lst == NULL) {
@@ -147,9 +166,9 @@ int evalVar(VarList *lst, char *varName) {
 }
 
 /**
- *
- * @param lst
- * @param val
+ * Devolve o valor de uma variavel através da estrutura de uma variavel
+ * @param lst Lista de Variaveis
+ * @param val Valor Struct
  * @return
  */
 int evalValue(VarList *lst, Value *val) {
@@ -163,8 +182,10 @@ int evalValue(VarList *lst, Value *val) {
 }
 
 /**
- *
- * @return
+ * @brief
+ * Cria uma nova estrutura que irá servir para correr os comandos
+ * @return Estrutura com uma imagem
+ * @see Image
  */
 Image *newImage() {
     Image *image = (Image*) malloc(sizeof(Image));
@@ -178,8 +199,11 @@ Image *newImage() {
 }
 
 /**
- *
- * @param lst
+ * @brief
+ * Função chamada no final de fazer parsing à gramatica
+ * program : instructionList { Run($1); }
+ * A mesma cria uma imagem e corre os comandos contidos na lst
+ * @param lst Lista de Comandos a Correr
  */
 void Run(Command *lst) {
     Image *image = newImage();
@@ -187,9 +211,10 @@ void Run(Command *lst) {
 }
 
 /**
- *
- * @param lst
- * @param image
+ * @brief
+ * Função recursiva principal que corre os comandos pertencentes à lista de comandos que foi feito o parsing
+ * @param lst Lista de comandos
+ * @param image Estrutura com informação da imagem
  */
 void runCommands(Command *lst, Image *image) {
 
@@ -394,11 +419,10 @@ void runCommands(Command *lst, Image *image) {
 
                 drawLine(image->img_data,image->x_size,image->y_size,x1,y1,x2,y2,r,g,b);
 
-                printf("LINE %d,%d  %d,%d;\n",x1,y1,x2,y2);
+                //printf("LINE %d,%d  %d,%d;\n",x1,y1,x2,y2);
                 //iterate
                 lst->point = lst->point->next;
             }
-            printf("POLYLINE =>");
         }
             break;
         case CIRC:
@@ -440,7 +464,8 @@ void runCommands(Command *lst, Image *image) {
 }
 
 /**
- *
+ * @brief
+ * Gera um numero random entre min e max
  * @param min
  * @param max
  * @return

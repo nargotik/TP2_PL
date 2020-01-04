@@ -1,0 +1,20 @@
+NEW 100x100;
+
+FOR t IN [1..500] DO
+p1 = RAND 100;
+p2 = RAND 100;
+p3 = RAND 100;
+p4 = RAND 100;
+p5 = RAND 100;
+p6 = RAND 100;
+p7 = RAND 100;
+p8 = RAND 100;
+p9 = RAND 100;
+p10 = RAND 100;
+c1 = RAND 255;
+c2 = RAND 255;
+c3 = RAND 255;
+POLYLINE p1,p2 p3,p4 p5,p6 p7,p8 p9,p10 p1,p2 c1:c2:c3;
+END FOR;
+
+SAVE "bar.pnm";

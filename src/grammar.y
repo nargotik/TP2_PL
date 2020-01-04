@@ -1,3 +1,14 @@
+/**
+ * @file grammar.y
+ * @author
+ *  - José Moura <a13742|at|alunos.ipca.pt>
+ *  - Óscar Silva <a14383|at|alunos.ipca.pt>
+ *  - Daniel Filipe <a17442|at|alunos.ipca.pt>
+ * @date 01 Jan 2020
+ * @brief
+ * Ficheiro de gramatica bison yacc
+ */
+
 %{
   #include <stdio.h>
   #include <string.h>
@@ -358,7 +369,7 @@ instruction : NEW v_dimension EOC {
                 NULL, /*Colours*/
                 $3, /*Val*/
                 NULL, /*Val1*/
-                parseValue(0,$1), /*str1*/ //@todo $1
+                parseValue(0,$1), /*str1*/
                 NULL, /*str2*/
                 NULL /*next*/
                 );
@@ -372,9 +383,9 @@ instruction : NEW v_dimension EOC {
                 NULL, /*Point*/
                 NULL,  /*Dimensions*/
                 NULL, /*Colours*/
-                parseValue(0,$3), /*Val*/ //@todo $3
+                parseValue(0,$3), /*Val*/
                 NULL, /*Val1*/
-                parseValue(0,$1), /*str1*/ //@todo $1
+                parseValue(0,$1), /*str1*/
                 NULL, /*str2*/
                 NULL /*next*/
                 );
@@ -387,9 +398,9 @@ instruction : NEW v_dimension EOC {
                 NULL, /*Point*/
                 NULL,  /*Dimensions*/
                 NULL, /*Colours*/
-                $4, /*Val*/ //@todo $4
+                $4, /*Val*/
                 NULL, /*Val1*/
-                parseValue(0,$1), /*str1*/ //@todo $1
+                parseValue(0,$1), /*str1*/
                 NULL, /*str2*/
                 NULL /*next*/
                 );

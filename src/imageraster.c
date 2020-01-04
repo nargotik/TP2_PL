@@ -1,3 +1,13 @@
+/**
+ * @file imageraster.c
+ * @author
+ *  - José Moura <a13742|at|alunos.ipca.pt>
+ *  - Óscar Silva <a14383|at|alunos.ipca.pt>
+ *  - Daniel Filipe <a17442|at|alunos.ipca.pt>
+ * @date 01 Jan 2020
+ * @brief
+ * Contem as instruções necessárias para manipular imagem PNM
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -91,7 +101,8 @@ void drawCircle(int *img_in, int x_size, int y_size,int raio,int x, int y, int r
  * @param c_b cor azul
  */
 void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y2, int c_r, int c_g, int c_b) {
-    printf("(%d-%d) > (%d-%d) %d>%d",x1,x2,y1,y2,x1-x2,y1-y2);
+    //printf("(%d-%d) > (%d-%d) %d>%d",x1,x2,y1,y2,x1-x2,y1-y2);
+
     // Vertical
     if (x1 == x2) {
         int ymin = min(y1,y2);
@@ -106,27 +117,27 @@ void drawLine(int *img_in, int x_size, int y_size,int x1, int y1 , int x2, int y
         for (int x=xmin; x<=xmax; x++) {
             drawPoint(img_in,x_size,y_size,x,y1,c_r,c_g,c_b);
         }
-    } else if (abs(x1-x2) > abs(y1-y2)) {
-        int xmin = min(x1,x2);
-        int xmax = max(x1,x2);
-        float m = (y2-y1)/(x2-x1);
-        float b = y1 - m * x1;
-        for (float x=xmin;x<= xmax;x += 0.01) {
-            float y = m * x + b;
-            drawPoint(img_in,x_size,y_size,x,y,c_r,c_g,c_b);
-        };
-        printf("-1-");
+    }  else if (abs(x1-x2) > abs(y1-y2)) {
+            int xmin = min(x1,x2);
+            int xmax = max(x1,x2);
+            float m =  (float)(y2-y1)/(float)(x2-x1);
+            float b = y1 - m * x1;
+            for (float x=xmin;x<= xmax;x += 0.01) {
+                float y = m * x + b;
+                drawPoint(img_in,x_size,y_size,x,y,c_r,c_g,c_b);
+            };
+            //printf("-1-");
     } else if (abs(x1-x2) <= abs(y1-y2)) {
 
         int ymin = min(y1,y2);
         int ymax = max(y1,y2);
-        float m = (y2-y1)/(x2-x1);
+        float m = (float)(y2-y1)/(float)(x2-x1);
         float b = y1 - m * x1;
         for (float y=ymin;y<= ymax;y += 0.01) {
             float x = (y-b)/m;
             drawPoint(img_in,x_size,y_size,x,y,c_r,c_g,c_b);
         }
-        printf("-%d %d-2-", ymin,ymax);
+        //printf("-%d %d-2-", ymin,ymax);
     }
 }
 
