@@ -22,13 +22,20 @@ A resolução deste trabalho foi dividida em duas partes :
 - **Análise Léxica** para verificar se os caracteres introduzidos fazem parte do alfabeto por nós criado;
 - **Análise Sintática** para verificar se os dados introduzidos seguem as regras gramaticais definidas na gramática por nós criada.
 
+De forma  a comprovar os conceitos de analisador léxico e sintático, foi-nos proposta uma série de problemas e de entre essas propostas dadas, deveríamos escolher uma para implementar.
+A nossa escolha recaiu no problema 2: Linguagem de Desenho de Imagens Raster por nos parecer um enunciado bastante interessante do ponto de vista de comprovar as valências do uso do "par Flex-Bison".
+ 
+ De forma bastante sucinta, este problema propunha a implementação de uma linguagem para a descrição e criação de imagens através da interpretação de um simples documento de texto com determinada sintaxe pré-estabelecida.
+ Foi-nos sugerido o uso do formato *PNM* por ser um formato bastante simples a nível de leitura e escrita e que possui a vantagem de poder ser armazenadas em memória usando matrizes.
+
+@todo - Terminar explicação da escolha e funções aplicáveis.
+
 Para a realização deste trabalho foram utilizadas as ferramentas abaixo descritas:
 
 - Flex (Versão 2.6.0)
 - Bison (Versão 3.0.4)
 
 
-@todo - Explicar o exercicio que adotamos
 
 ## Utilização/Compilação
 Para compilar as aplicações necessárias simplesmente é necessário efectuar o comando:
@@ -55,7 +62,7 @@ No ficheiro por nós desenvolvido, o preâmbulo é constituído pela inclusão d
 
 A segunda parte, o corpo, é a zona na qual estão definidas as expressões regulares, assim como as ações semânticas que poderão ser despoletadas aquando do eventual reconhecimento de um *token*.
 
-```flex
+```c
 %%
 
 NEW|new     { return NEW; }
@@ -107,15 +114,18 @@ Nesta implementação, foi definida a função **yywrap()** que retorna 1 e que 
 
 O Bison é um software desenvolvido com  o intuito de permitir gerar automaticamente programas para análise sintática.
 Possui como entrada a declaração de uma gramática, que especifica uma linguagem e gera como saída o *parser* dessa linguagem.
-O *parser* gerado pelo Bison permite a validar os argumentos que lá são introduzidos, dizendo se os mesmos estão ou não sintaticamente corretos, segundo a gramática definida.
-
-@todo - Explicar a nossa abordagem;
-
-
+O *parser* gerado pelo Bison permite validar os argumentos lá introduzidos permitindo assim, averiguar se os mesmos seguem a lógica sintática definida na nossa gramática.
+ 
+ @todo - Fazer o similar do Flex.
+ 
 ## Conclusão
 
-Neste trabalho, surgiu uma necessidade acrescida ao nível de conhecimento abordado noutras cadeiras para a implementação de uma solução conforme pedido no enunciado. Como referido, a cadeira de SOSD foi uma ferramenta importante na implementação de comandos usados tais como o interpretador. Contudo com ajuda do flex, bison e de uma biblioteca com funções necessárias para a implementação do software de desenho com imagens em Raster, foram decisivos para o resultado final. Apesar dos inúmeros formatos pedidos, toda esta gestão só foi possível com uma estrutura bem delineada a nível de código em C, para que os ficheiros sejam gerados corretamente sem nenhuma perda de dados.
-Em suma, pensamos ter cumprido com rigor aquilo a que este trabalho nos implicou ao nivel de conhecimento teórico e prático na disciplina de processamento de linguagens.
+@todo - Refazer Conclusão:
+_ Adicionar imagens exemplificativas de como funciona a solução (pedir ao Daniel para gerar no Mint)
+_ Vantagens e Desvantagens da implementação do "par Flex-Bison"
+
+[Neste trabalho, surgiu uma necessidade acrescida ao nível de conhecimento abordado noutras cadeiras para a implementação de uma solução conforme pedido no enunciado. Como referido, a cadeira de SOSD foi uma ferramenta importante na implementação de comandos usados tais como o interpretador. Contudo com ajuda do flex, bison e de uma biblioteca com funções necessárias para a implementação do software de desenho com imagens em Raster, foram decisivos para o resultado final. Apesar dos inúmeros formatos pedidos, toda esta gestão só foi possível com uma estrutura bem delineada a nível de código em C, para que os ficheiros sejam gerados corretamente sem nenhuma perda de dados.
+Em suma, pensamos ter cumprido com rigor aquilo a que este trabalho nos implicou ao nivel de conhecimento teórico e prático na disciplina de processamento de linguagens.]
 
 ## Bibliografia / Referências
 
