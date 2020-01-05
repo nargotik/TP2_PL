@@ -61,19 +61,19 @@ Definiu-se ainda que:
 
 Para a gestão das imagens foram definidas os seguintes comandos:
 - NEW - Comando que prepara a área de desenho, recebendo como parâmetros o tamanho da área de desenho (p.ex. 800x600) e a cor iniciada (p.ex. 255:0:0). 
-```
+```c
 			NEW 800x600 255:0:0;
 ```
 O parâmetro cor é opcional, sendo que, no caso de ser omitido, a área de desenho é iniciada com a cor branca (255:255:255)
-```
+```c
 			NEW 800x600;
 ```
 - LOAD - Comando encarregado de carregar um ficheiro *.pnm* para memória.
-```
+```c
 			LOAD "ficheiro.pnm";
 ```
 - SAVE - Comando encarregado de guardar uma imagem gerada em memória num ficheiro de imagem P6.
-```
+```c
 			SAVE "ficheiro.pnm";
 ```
 #### 2. Desenho
@@ -81,19 +81,96 @@ O parâmetro cor é opcional, sendo que, no caso de ser omitido, a área de dese
 Segundo o enunciado, todas as primitivas de desenho deverão aceitar um último parâmetro com a cor a ser usada para desenhar. No entanto pode ser definida uma cor "por omissão", sendo que essa será definida pelo comando COLOR.
 
 - COLOR - Comando responsável por definir a cor padrão caso os comandos não possuam uma cor definida nos seus parâmetros.
-```
+```c
 			COLOR 128:128:128;
 ```
-- POINT - 
+- POINT - Comando responsável por desenhar um ponto nas coordenadas *x,y* indicadas.
+```c
+			POINT 4,100;
+```
+Opcionalmente podemos ainda definir a cor que deve ser usada para o ponto.
+```c
+			POINT 4,100 255:128:0;
+```
+- LINE - Comando responsável converter dois pontos recebidos em uma reta e em desenhá-la.
+```c
+		LINE 4,100 4,200; // Utilizando cor padrão
+		LINE 4,100 4,200 255:128:0; // Utilizando uma cor específica
+```
+- RECT - Comando responsável por desenhar quadrados. Aceita como parâmetros dois pontos opostos.
+
+```c
+		RECT 5,10 10,20; // Utilizando cor padrão
+		RECT 5,10 10,20 255:128:0; // Utilizando uma cor específica
+```
+Aceita ainda como parâmetros o ponto que se encontra na posição do canto superior esquerdo e as dimensões do quadrado.
+
+```c
+		RECT 5,10 10x20; // Utilizando cor padrão
+		RECT 5,10 10x20 255:128:0; // Utilizando uma cor específica
+```
+- RECTFILL - Comando similar ao anterior, no entanto possui a capacidade de pintar de determinada cor (a padrão ou uma especifica).
+```c
+// Utilizando cor padrão
+		RECTFILL 5,10 10,20;
+		RECTFILL 5,10 10x20;
+// Utilizando uma cor específica
+		RECTFILL 5,10 10,20 255:128:0; 
+		RECTFILL 5,10 10x20 255:128:0;
+```
+- CIRC - Comando responsável por desenhar círculos. Para desenhar aceita como parâmetros um ponto fixo que funcionará como centro e um raio.
+```c
+		CIRC 5,10 100; // Utilizando cor padrão
+		CIRC 5,10 100 255:128:0; // Utilizando uma cor específica
+```
+
+- CIRCFILL - Comando similar ao anterior, no entanto possui a capacidade de pintar de determinada cor (a padrão ou uma específica).
+
+```c
+		CIRCFILL 5,10 100; // Utilizando cor padrão
+		CIRCFILL 5,10 100 255:128:0; // Utilizando uma cor específica
+```
+- POLYLINE - Comando responsável por desenhar linhas entre os pontos passados como parâmetros.
+```c
+		POLYLINE 5,10 10,10 10,15; // Utilizando cor padrão
+		POLYLINE 5,10 10,10 10,15 255:128:0; // Utilizando uma cor específica
+```
+#### 3. Variáveis e Expressões
+
+Como se pode verificar, muitos dos parâmetros que na secção anterior foram apresentados são definições de pontos geométricos e códigos RGB para as cores a aplicar na instrução. 
+Face a esse facto, podemos então definir variáveis que permitirão armazenar os dados referentes aos pontos geométricos ou ao código RGB da cor.
+
+A sua atribuição é similar ao utilizado na linguagem C, utilizando-se o caráter '='.
+Tal como em C, a atribuição de dados a uma variável pode ser do tipo numérico ou outra variável.
+
+```c
+			raio = 2;
+			diametro = 2 * raio;
+```
+Salienta-se o facto que os caracteres "x" "y" "z" não podem ser usados como variáveis pois no contexto do problema serão usados como delineadores de instruções.
+
+Uma outra funcionalidade bastante importante na geração imagens é o facto de podermos criar imagens com pontos aleatórios. Para tal, foi necessário utilizar a função RAND nativa do C para gerar pontos aleatórios na área de desenho, sendo que o valor apresentado após o termo *RAND* é o valor máximo admitido.
+
+```c
+			a = RAND 10;
+```
+No exemplo acima apresentado, a variável *a* pode tomar valores entre 0 e 10, inclusive.
+
+É também muito importante que a linguagem de desenho aceite iterar várias vezes a mesma instrução. Para tal, é necessário aplicar o conceito de ciclos.
+Foi desenvolvido então um ciclo *for* muito similar ao aplicado em linguagens imperativas, no entanto com ligeiras nuances.
+
+```c
+		FOR i IN [10..20] DO ... END FOR;
+```
 ## Utilização/Compilação
 Para compilar as aplicações necessárias simplesmente é necessário efectuar o comando:
 ```shell script
 $ make
 ```
 
-## Estrutura do flex
+## Estrutura do Flex
 
-O flex é um software desenvolvido com  o intuito de permitir a análise léxica de um determinado conjunto de dados através do reconhecimento de sequências de caracteres ("tokens") definidas pelo programador.
+O Flex é um software desenvolvido com  o intuito de permitir a análise léxica de um determinado conjunto de dados através do reconhecimento de sequências de caracteres ("tokens") definidas pelo programador.
 
 Um  ficheiro de Flex é composto por três zonas delimitadas por **%%**
 
