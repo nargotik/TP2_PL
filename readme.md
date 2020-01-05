@@ -359,11 +359,15 @@ Após a concretização de todas as funções e comandos necessários para  a re
 ```shell script
 $ ./bin/imageraster < examples/example[...]txt
 ```
+
+Seguem abeixo alguns exemplos:
+
 ![CIRC](https://github.com/nargotik/TP2_PL/raw/master/images/bar_circ.png)
 ![LINE](https://github.com/nargotik/TP2_PL/raw/master/images/bar_line.png)
 ![POLYLINE](https://github.com/nargotik/TP2_PL/raw/master/images/bar_polyline.png)
 ![RECTFILL](https://github.com/nargotik/TP2_PL/raw/master/images/bar_recfill.png)
 ![RECT](https://github.com/nargotik/TP2_PL/raw/master/images/bar_rect.png)
+
 ## Conclusão
 
 A título de conclusão, podemos verificar que um compilador é um componente bastante complexo, na medida em todo o progresso de análise léxica e sintática regem-se por regras bastante bem definidas.
