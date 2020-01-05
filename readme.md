@@ -26,17 +26,65 @@ De forma  a comprovar os conceitos de analisador léxico e sintático, foi-nos p
 A nossa escolha recaiu no problema 2: Linguagem de Desenho de Imagens Raster por nos parecer um enunciado bastante interessante do ponto de vista de comprovar as valências do uso do "par Flex-Bison".
  
  De forma bastante sucinta, este problema propunha a implementação de uma linguagem para a descrição e criação de imagens através da interpretação de um simples documento de texto com determinada sintaxe pré-estabelecida.
- Foi-nos sugerido o uso do formato *PNM* por ser um formato bastante simples a nível de leitura e escrita e que possui a vantagem de poder ser armazenadas em memória usando matrizes.
-
-@todo - Terminar explicação da escolha e funções aplicáveis.
-
+ 
 Para a realização deste trabalho foram utilizadas as ferramentas abaixo descritas:
 
 - Flex (Versão 2.6.0)
 - Bison (Versão 3.0.4)
 
+### Estratégia de resolução do Problema
 
+ Para resolver tal problema foi-nos sugerido o uso do formato *PNM* por ser um formato bastante simples a nível de leitura e escrita e com a vantagem de poder ser armazenado em memória usando matrizes.
+ A família *PNM* possui vários sub-formatos sendo designados por P*n* estando *n* definido entre 1 e 6. 
+ As diferenças entre eles baseiam-se na forma como são codificados (ASCII ou Binário) e quais os conjuntos de cores que conseguem armazenar (B&W, 256 cinzentos ou 16M cores).
+ 
+|Nome|P1  |P2  |P3  |P4  |P5  |P6  |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|Cores  |B&W  |256 Cinzentos  |16M Cores  |B&W  |256 Cinzentos  | 16M Cores |
+|Codificação  |ASCII  |ASCII  |ASCII|Binário  |Binário  |Binário  |
 
+ Face à representação vista na tabela acima, resolvemos utilizar o formato *P6* pois o mesmo permite a criação de imagens a 16M Cores, mesmo que a nível de codificação, os pixeis da imagem sejam em binário, usando um byte para representar cada cor.
+ 
+ #### Definição da linguagem de Desenho
+ 
+A linguagem de desenho é definida através da interpretação de um conjunto de comandos previamente estabelecidos e devem terminal por ponto e virgula (;).
+Definiu-se ainda que:
+- Os comandos deveriam ser escritos em maiúsculas;
+-  As variáveis deveriam ser escritas em minúsculas;
+-  Só se podem usar valores inteiros;
+-  Um ponto geométrico é definido por dois inteiros separados por uma vírgula; 
+- Uma área é definida por dois inteiros separados por 'x';
+- Uma cor é definida através da representação numérica RGB (três inteiros separados por dois pontos);
+- Uma string é delimitada por aspas simples.
+
+#### 1. Gestão de Imagens
+
+Para a gestão das imagens foram definidas os seguintes comandos:
+- NEW - Comando que prepara a área de desenho, recebendo como parâmetros o tamanho da área de desenho (p.ex. 800x600) e a cor iniciada (p.ex. 255:0:0). 
+```
+			NEW 800x600 255:0:0;
+```
+O parâmetro cor é opcional, sendo que, no caso de ser omitido, a área de desenho é iniciada com a cor branca (255:255:255)
+```
+			NEW 800x600;
+```
+- LOAD - Comando encarregado de carregar um ficheiro *.pnm* para memória.
+```
+			LOAD "ficheiro.pnm";
+```
+- SAVE - Comando encarregado de guardar uma imagem gerada em memória num ficheiro de imagem P6.
+```
+			SAVE "ficheiro.pnm";
+```
+#### 2. Desenho
+
+Segundo o enunciado, todas as primitivas de desenho deverão aceitar um último parâmetro com a cor a ser usada para desenhar. No entanto pode ser definida uma cor "por omissão", sendo que essa será definida pelo comando COLOR.
+
+- COLOR - Comando responsável por definir a cor padrão caso os comandos não possuam uma cor definida nos seus parâmetros.
+```
+			COLOR 128:128:128;
+```
+- POINT - 
 ## Utilização/Compilação
 Para compilar as aplicações necessárias simplesmente é necessário efectuar o comando:
 ```shell script
@@ -122,7 +170,7 @@ O *parser* gerado pelo Bison permite validar os argumentos lá introduzidos perm
 
 @todo - Refazer Conclusão:
 _ Adicionar imagens exemplificativas de como funciona a solução (pedir ao Daniel para gerar no Mint)
-_ Vantagens e Desvantagens da implementação do "par Flex-Bison"
+_ Vantagens e Desvantagens da implementação do "par Flex-Bison" (?)
 
 [Neste trabalho, surgiu uma necessidade acrescida ao nível de conhecimento abordado noutras cadeiras para a implementação de uma solução conforme pedido no enunciado. Como referido, a cadeira de SOSD foi uma ferramenta importante na implementação de comandos usados tais como o interpretador. Contudo com ajuda do flex, bison e de uma biblioteca com funções necessárias para a implementação do software de desenho com imagens em Raster, foram decisivos para o resultado final. Apesar dos inúmeros formatos pedidos, toda esta gestão só foi possível com uma estrutura bem delineada a nível de código em C, para que os ficheiros sejam gerados corretamente sem nenhuma perda de dados.
 Em suma, pensamos ter cumprido com rigor aquilo a que este trabalho nos implicou ao nivel de conhecimento teórico e prático na disciplina de processamento de linguagens.]
