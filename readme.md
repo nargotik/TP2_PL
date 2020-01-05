@@ -241,16 +241,127 @@ O Bison é um software desenvolvido com  o intuito de permitir gerar automaticam
 Possui como entrada a declaração de uma gramática, que especifica uma linguagem e gera como saída o *parser* dessa linguagem.
 O *parser* gerado pelo Bison permite validar os argumentos lá introduzidos permitindo assim, averiguar se os mesmos seguem a lógica sintática definida na nossa gramática.
  
- @todo - Fazer o similar do Flex.
+ De forma similar ao que acontece na estrutura de ficheiro do Flex, um  ficheiro de Bison é também composto por três zonas delimitadas por **%%**
+
+A primeira parte, o preâmbulo, é o local onde se faz a inclusão das bibliotecas a serem utilizadas.
+
+```c
+%{
+  #include <stdio.h>
+  #include <string.h>
+  #include "../src/commands.h"
+  int yylex();
+  int yyerror(char*);
+  #define DEBUG 1
+%}
+```
+No ficheiro por nós desenvolvido, o preâmbulo é constituído pela inclusão da biblioteca com a definição das funções necessárias para a criação de um software de desenho de imagens em Raster. É também incluído no preâmbulo a biblioteca commands.h que informa ao analisador sintático que as funções que concretizam as instruções definidas na gramática estão concretizadas nessa biblioteca.
  
+ São ainda definidos outros blocos de código que dizem respeito a outras declarações.
+
+```c
+%union {
+   int num;
+   Command *cmd; // both a single command or a command list
+   Value *val;
+   Dimension *dim;
+   Colour *col;
+   Point *pt;
+   char *str;  // used for variable names
+}
+
+%token NEW LOAD SAVE COLOR POINT RECT RECTFILL CIRC POLYLINE EOC LINE RAND CRUZ FOR IN DO END TO ATTRIB ATTRIB_RAND
+%token<str> VAR_VALUE VAR_NAME FILE_NAME
+%token<num> INT
+
+%type<cmd> instructionList instruction
+%type<dim> v_dimension
+%type<col> v_colour
+%type<pt> v_point v_points_multiple v_points_two
+%type<val> value
+
+%start program;
+%expect 1
+``` 
+
+Na nossa implementação foram necessárias usar algumas definições extra que têm como objetivo o seguinte:
+- %union - Permite definir a estrutura que o *lexer* vai usar para transmitir esse conjunto de dados para o analisador;
+- %token - Permite definir símbolos que representam os valores que serão retornados pelo *lexer* e que correspondem a símbolos terminais em produções;
+- %type - Permite especificar nomes para símbolos não terminais em produções;
+- %start - Indica ao Bison qual é o símbolo não terminal onde a gramática deve iniciar.
+
+A segunda parte, o corpo, é a zona na qual estão definidas as produções e o respetivo código a ser invocado caso a regra sintática seja correspondida.
+
+```c
+program : instructionList { Run($1); }
+        ;
+
+instructionList : instruction { $$ = $1; }
+                | instruction instructionList
+                       { $$ = insertCommand($2,$1); }
+                ;
+
+(...)
+
+v_dimension : value CRUZ value {
+                $$ = parseDimension($1,$3);
+};
+
+v_colour  : value ':' value ':' value {
+                $$ = parseColour($1, $3, $5);
+};
+
+v_point : value ',' value {
+                $$ = parsePoint(NULL,$1,$3);
+};
+
+v_points_multiple : v_point {
+          $$ = $1;
+      }
+      | v_points_multiple v_point {
+          $2->next = $1;
+          $$ = $2;
+      }
+      ;
+v_points_two : v_point v_point {
+        $1->next = $2;
+        $$ = $1;
+};
+
+
+value : INT  {  Value* v = (Value*)malloc(sizeof(Value));
+               v->val = $1;
+               v->var = NULL;
+               $$ = v; }
+     | VAR_NAME {
+               Value *v = (Value*)malloc(sizeof(Value));
+               v->var = $1;
+               $$ = v; }
+     ;
+```
+Na nossa implementação, o corpo é constituído pelas produções que permitem verificar se a sintaxe usada no ficheiro de texto permite criar a imagem. Em caso afirmativo são invocadas as funções necessárias para a criação da imagem. Em caso contrário a imagem não será criada.
+
+A terceira parte é destinada para as funções adicionais necessárias para o bom funcionamento do analisador sintático.
+
+```c
+int yyerror(char* msg) { printf("Error: %s\n", msg); return 0; }
+```
+Nesta implementação, foi definida a função **yyerror()** que retorna o código do erro para o utilizador, caso algum erro se verifique. Caso contrário retorna um 0.
+
+## Resultados obtidos
+
+Após a concretização de todas as funções e comandos necessários para  a resolução do problema, se for executado o comando abaixo descrito obteremos a imagem PNM (P6) que esperávamos.
+
+```shell script
+$ ./bin/imageraster < examples/example[...]txt
+```
+
+
 ## Conclusão
 
-@todo - Refazer Conclusão:
-_ Adicionar imagens exemplificativas de como funciona a solução (pedir ao Daniel para gerar no Mint)
-_ Vantagens e Desvantagens da implementação do "par Flex-Bison" (?)
-
-[Neste trabalho, surgiu uma necessidade acrescida ao nível de conhecimento abordado noutras cadeiras para a implementação de uma solução conforme pedido no enunciado. Como referido, a cadeira de SOSD foi uma ferramenta importante na implementação de comandos usados tais como o interpretador. Contudo com ajuda do flex, bison e de uma biblioteca com funções necessárias para a implementação do software de desenho com imagens em Raster, foram decisivos para o resultado final. Apesar dos inúmeros formatos pedidos, toda esta gestão só foi possível com uma estrutura bem delineada a nível de código em C, para que os ficheiros sejam gerados corretamente sem nenhuma perda de dados.
-Em suma, pensamos ter cumprido com rigor aquilo a que este trabalho nos implicou ao nivel de conhecimento teórico e prático na disciplina de processamento de linguagens.]
+A título de conclusão, podemos verificar que um compilador é um componente bastante complexo, na medida em todo o progresso de análise léxica e sintática regem-se por regras bastante bem definidas.
+Concluímos ainda que a junção Flex-Bison permite simular muito bem qual o *WorkFlow* que o compilador utiliza de cada vez que necessita de verificar os dados que a ele são submetidos.
+Verificamos ainda que o processo de análise sintática é muito mais complexa do que a análise léxica e que a definição de uma gramática deve ser o mais objetiva possível de forma a impedir situações de erros derivados a ambiguidades do analisador sintático.
 
 ## Bibliografia / Referências
 
