@@ -360,7 +360,7 @@ Após a concretização de todas as funções e comandos necessários para  a re
 $ ./bin/imageraster < examples/example[...]txt
 ```
 
-Seguem abeixo alguns exemplos:
+Seguem abaixo alguns exemplos gerados:
 
 ![CIRC](https://github.com/nargotik/TP2_PL/raw/master/images/bar_circ.png)
 ![LINE](https://github.com/nargotik/TP2_PL/raw/master/images/bar_line.png)
