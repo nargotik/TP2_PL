@@ -371,8 +371,10 @@ Seguem abaixo alguns exemplos gerados:
 ## Conclusão
 
 A título de conclusão, podemos verificar que um compilador é um componente bastante complexo, na medida em todo o progresso de análise léxica e sintática regem-se por regras bastante bem definidas.
+
 Concluímos ainda que a junção Flex-Bison permite simular muito bem qual o *WorkFlow* que o compilador utiliza de cada vez que necessita de verificar os dados que a ele são submetidos.
-Verificamos ainda que o processo de análise sintática é muito mais complexa do que a análise léxica e que a definição de uma gramática deve ser o mais objetiva possível de forma a impedir situações de erros derivados a ambiguidades do analisador sintático.
+
+Verificámos ainda que o processo de análise sintática é muito mais complexa do que a análise léxica e que a definição de uma gramática deve ser o mais objetiva possível de forma a impedir situações de erros derivados a ambiguidades do analisador sintático.
 
 ## Bibliografia / Referências
 
