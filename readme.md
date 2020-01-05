@@ -343,6 +343,7 @@ value : INT  {  Value* v = (Value*)malloc(sizeof(Value));
                $$ = v; }
      ;
 ```
+
 Na nossa implementação, o corpo é constituído pelas produções que permitem verificar se a sintaxe usada no ficheiro de texto permite criar a imagem. Em caso afirmativo são invocadas as funções necessárias para a criação da imagem. Em caso contrário a imagem não será criada.
 
 A terceira parte é destinada para as funções adicionais necessárias para o bom funcionamento do analisador sintático.
@@ -350,6 +351,7 @@ A terceira parte é destinada para as funções adicionais necessárias para o b
 ```c
 int yyerror(char* msg) { printf("Error: %s\n", msg); return 0; }
 ```
+
 Nesta implementação, foi definida a função **yyerror()** que retorna o código do erro para o utilizador, caso algum erro se verifique. Caso contrário retorna um 0.
 
 ## Resultados obtidos
