@@ -1,0 +1,765 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Trabalho Prático 2: Referência ao ficheiro src/commands.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ipca_logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Trabalho Prático 2
+   </div>
+   <div id="projectbrief">Processamento de Linguagens</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('commands_8c.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência ao ficheiro commands.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Este ficheiro contem as instruções necessárias para executar os comandos vindos do grammar.y.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="commands_8h_source.html">../src/commands.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="imageraster_8h_source.html">../src/imageraster.h</a>&quot;</code><br />
+<code>#include &quot;../include/grammar.tab.h&quot;</code><br />
+</div>
+<p><a href="commands_8c_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a4fcd691a2cf8c6b21343bcf91125c1c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="commands_8h.html#a108ee31bcf6dff66da781bb30fd5b26f">Colour</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#a4fcd691a2cf8c6b21343bcf91125c1c7">parseColour</a> (<a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *r, <a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *g, <a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *b)</td></tr>
+<tr class="memdesc:a4fcd691a2cf8c6b21343bcf91125c1c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recebe 3 valores e cria uma estrutura de cor.  <a href="commands_8c.html#a4fcd691a2cf8c6b21343bcf91125c1c7">Mais...</a><br /></td></tr>
+<tr class="separator:a4fcd691a2cf8c6b21343bcf91125c1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c2249bee7249c8593a024ad058aaf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="commands_8h.html#a887d412140d322e7d383730d4f96ce24">Dimension</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#ad8c2249bee7249c8593a024ad058aaf7">parseDimension</a> (<a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *x, <a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *y)</td></tr>
+<tr class="memdesc:ad8c2249bee7249c8593a024ad058aaf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recebe 2 valores e devolve uma estrutura do tipo dimension (x x y)  <a href="commands_8c.html#ad8c2249bee7249c8593a024ad058aaf7">Mais...</a><br /></td></tr>
+<tr class="separator:ad8c2249bee7249c8593a024ad058aaf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5aab06abe98a482b14d74dfe31623b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="commands_8h.html#aa9cfdb80b4ca12013a2de8a3b9b97981">Point</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#ab5aab06abe98a482b14d74dfe31623b3">parsePoint</a> (<a class="el" href="commands_8h.html#aa9cfdb80b4ca12013a2de8a3b9b97981">Point</a> *lst, <a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *x, <a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *y)</td></tr>
+<tr class="memdesc:ab5aab06abe98a482b14d74dfe31623b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recebe 2 valores de x e y e uma lista de pontos.  <a href="commands_8c.html#ab5aab06abe98a482b14d74dfe31623b3">Mais...</a><br /></td></tr>
+<tr class="separator:ab5aab06abe98a482b14d74dfe31623b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58121306ac54ce82b0b36444a392b145"><td class="memItemLeft" align="right" valign="top"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#a58121306ac54ce82b0b36444a392b145">parseValue</a> (int val, char *str)</td></tr>
+<tr class="memdesc:a58121306ac54ce82b0b36444a392b145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cria uma estutura do tipo value dependendo se enviamos uma string ou um valor.  <a href="commands_8c.html#a58121306ac54ce82b0b36444a392b145">Mais...</a><br /></td></tr>
+<tr class="separator:a58121306ac54ce82b0b36444a392b145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a5b231d3dd9e3d70996e6420b0aa4d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#a5a5b231d3dd9e3d70996e6420b0aa4d8">newCommand</a> (int command, <a class="el" href="commands_8h.html#aa9cfdb80b4ca12013a2de8a3b9b97981">Point</a> *pt, <a class="el" href="commands_8h.html#a887d412140d322e7d383730d4f96ce24">Dimension</a> *dim, <a class="el" href="commands_8h.html#a108ee31bcf6dff66da781bb30fd5b26f">Colour</a> *col, <a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *val, <a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *val2, <a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *str, <a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *str2, <a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *child)</td></tr>
+<tr class="memdesc:a5a5b231d3dd9e3d70996e6420b0aa4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que cria um comando e o devolve.  <a href="commands_8c.html#a5a5b231d3dd9e3d70996e6420b0aa4d8">Mais...</a><br /></td></tr>
+<tr class="separator:a5a5b231d3dd9e3d70996e6420b0aa4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeddf6a23c87a6dc29f309ddd4e9713fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#aeddf6a23c87a6dc29f309ddd4e9713fb">insertCommand</a> (<a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *lst, <a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *cmd)</td></tr>
+<tr class="memdesc:aeddf6a23c87a6dc29f309ddd4e9713fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recebe uma lista de comandos e um comando e insere o mesmo na lista.  <a href="commands_8c.html#aeddf6a23c87a6dc29f309ddd4e9713fb">Mais...</a><br /></td></tr>
+<tr class="separator:aeddf6a23c87a6dc29f309ddd4e9713fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2098799a0e33fb06755fa84130b3749"><td class="memItemLeft" align="right" valign="top"><a class="el" href="commands_8h.html#afe3ebba24f9cd319804a07ed008c6cef">VarList</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#ae2098799a0e33fb06755fa84130b3749">updateVar</a> (<a class="el" href="commands_8h.html#afe3ebba24f9cd319804a07ed008c6cef">VarList</a> *lst, char *varName, int varValue)</td></tr>
+<tr class="memdesc:ae2098799a0e33fb06755fa84130b3749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Altera o valor de uma variavel.  <a href="commands_8c.html#ae2098799a0e33fb06755fa84130b3749">Mais...</a><br /></td></tr>
+<tr class="separator:ae2098799a0e33fb06755fa84130b3749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d7f58269592e4b791f66e97e3cf5bfd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#a2d7f58269592e4b791f66e97e3cf5bfd">evalVar</a> (<a class="el" href="commands_8h.html#afe3ebba24f9cd319804a07ed008c6cef">VarList</a> *lst, char *varName)</td></tr>
+<tr class="memdesc:a2d7f58269592e4b791f66e97e3cf5bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devolve o valor de uma variavel através do nome da mesma.  <a href="commands_8c.html#a2d7f58269592e4b791f66e97e3cf5bfd">Mais...</a><br /></td></tr>
+<tr class="separator:a2d7f58269592e4b791f66e97e3cf5bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09f6486342c0f07cec3b3f497eb600b9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#a09f6486342c0f07cec3b3f497eb600b9">evalValue</a> (<a class="el" href="commands_8h.html#afe3ebba24f9cd319804a07ed008c6cef">VarList</a> *lst, <a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *val)</td></tr>
+<tr class="separator:a09f6486342c0f07cec3b3f497eb600b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1227ed2479e3da9231e66f23640cdce0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="commands_8h.html#aa2e142f8620802bf0a8da47bac7bb1b2">Image</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#a1227ed2479e3da9231e66f23640cdce0">newImage</a> ()</td></tr>
+<tr class="memdesc:a1227ed2479e3da9231e66f23640cdce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cria uma nova estrutura que irá servir para correr os comandos.  <a href="commands_8c.html#a1227ed2479e3da9231e66f23640cdce0">Mais...</a><br /></td></tr>
+<tr class="separator:a1227ed2479e3da9231e66f23640cdce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d7fd1f5323453a1718aa531f7592ad4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#a6d7fd1f5323453a1718aa531f7592ad4">Run</a> (<a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *lst)</td></tr>
+<tr class="memdesc:a6d7fd1f5323453a1718aa531f7592ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função chamada no final de fazer parsing à gramatica program : instructionList { Run($1); } A mesma cria uma imagem e corre os comandos contidos na lst.  <a href="commands_8c.html#a6d7fd1f5323453a1718aa531f7592ad4">Mais...</a><br /></td></tr>
+<tr class="separator:a6d7fd1f5323453a1718aa531f7592ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a31595ed6751c6de3a4635b4773a7a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#a5a31595ed6751c6de3a4635b4773a7a9">runCommands</a> (<a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *lst, <a class="el" href="commands_8h.html#aa2e142f8620802bf0a8da47bac7bb1b2">Image</a> *image)</td></tr>
+<tr class="memdesc:a5a31595ed6751c6de3a4635b4773a7a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função recursiva principal que corre os comandos pertencentes à lista de comandos que foi feito o parsing.  <a href="commands_8c.html#a5a31595ed6751c6de3a4635b4773a7a9">Mais...</a><br /></td></tr>
+<tr class="separator:a5a31595ed6751c6de3a4635b4773a7a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c09f9f15d5c0c654f84ac54dcc3823d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8c.html#a3c09f9f15d5c0c654f84ac54dcc3823d">gera_random</a> (int <a class="el" href="imageraster_8h.html#abd8bbcfabb3ddef2ccaafb9928a37b95">min</a>, int <a class="el" href="imageraster_8h.html#af082905f7eac6d03e92015146bbc1925">max</a>)</td></tr>
+<tr class="memdesc:a3c09f9f15d5c0c654f84ac54dcc3823d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gera um numero random entre min e max.  <a href="commands_8c.html#a3c09f9f15d5c0c654f84ac54dcc3823d">Mais...</a><br /></td></tr>
+<tr class="separator:a3c09f9f15d5c0c654f84ac54dcc3823d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Este ficheiro contem as instruções necessárias para executar os comandos vindos do grammar.y. </p>
+<dl class="section author"><dt>Autor</dt><dd><ul>
+<li>José Moura &lt;a13742|at|alunos.ipca.pt&gt;</li>
+<li>Óscar Silva &lt;a14383|at|alunos.ipca.pt&gt;</li>
+<li>Daniel Filipe &lt;a17442|at|alunos.ipca.pt&gt; </li>
+</ul>
+</dd></dl>
+<dl class="section date"><dt>Data</dt><dd>01 Jan 2020 </dd></dl>
+
+<p class="definition">Definido no ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+</div><h2 class="groupheader">Documentação das funções</h2>
+<a id="a09f6486342c0f07cec3b3f497eb600b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09f6486342c0f07cec3b3f497eb600b9">&#9670;&nbsp;</a></span>evalValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int evalValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#afe3ebba24f9cd319804a07ed008c6cef">VarList</a> *&#160;</td>
+          <td class="paramname"><em>lst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Devolve o valor de uma variavel através da estrutura de uma variavel </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lst</td><td>Lista de Variaveis </td></tr>
+    <tr><td class="paramname">val</td><td>Valor Struct </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd></dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00174">174</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8c_source.html#l00156">evalVar()</a>, <a class="el" href="commands_8h_source.html#l00032">_Value::val</a> e <a class="el" href="commands_8h_source.html#l00031">_Value::var</a>.</p>
+
+</div>
+</div>
+<a id="a2d7f58269592e4b791f66e97e3cf5bfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d7f58269592e4b791f66e97e3cf5bfd">&#9670;&nbsp;</a></span>evalVar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int evalVar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#afe3ebba24f9cd319804a07ed008c6cef">VarList</a> *&#160;</td>
+          <td class="paramname"><em>lst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>varName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Devolve o valor de uma variavel através do nome da mesma. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lst</td><td>Lista de Variaveis </td></tr>
+    <tr><td class="paramname">varName</td><td>Nome da Variavel </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Inteiro do valor da variavel </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00156">156</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8c_source.html#l00156">evalVar()</a>, <a class="el" href="commands_8h_source.html#l00023">_varList::next</a>, <a class="el" href="commands_8h_source.html#l00022">_varList::val</a> e <a class="el" href="commands_8h_source.html#l00021">_varList::var</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="commands_8c_source.html#l00174">evalValue()</a> e <a class="el" href="commands_8c_source.html#l00156">evalVar()</a>.</p>
+
+</div>
+</div>
+<a id="a3c09f9f15d5c0c654f84ac54dcc3823d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c09f9f15d5c0c654f84ac54dcc3823d">&#9670;&nbsp;</a></span>gera_random()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gera_random </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gera um numero random entre min e max. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td></td></tr>
+    <tr><td class="paramname">max</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd></dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00505">505</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+</div>
+</div>
+<a id="aeddf6a23c87a6dc29f309ddd4e9713fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeddf6a23c87a6dc29f309ddd4e9713fb">&#9670;&nbsp;</a></span>insertCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a>* insertCommand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *&#160;</td>
+          <td class="paramname"><em>lst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *&#160;</td>
+          <td class="paramname"><em>cmd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recebe uma lista de comandos e um comando e insere o mesmo na lista. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lst</td><td>Lista de Comandos </td></tr>
+    <tr><td class="paramname">cmd</td><td>Nodo </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd></dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00118">118</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8h_source.html#l00077">_Command::next</a>.</p>
+
+</div>
+</div>
+<a id="a5a5b231d3dd9e3d70996e6420b0aa4d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a5b231d3dd9e3d70996e6420b0aa4d8">&#9670;&nbsp;</a></span>newCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a>* newCommand </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#aa9cfdb80b4ca12013a2de8a3b9b97981">Point</a> *&#160;</td>
+          <td class="paramname"><em>pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a887d412140d322e7d383730d4f96ce24">Dimension</a> *&#160;</td>
+          <td class="paramname"><em>dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a108ee31bcf6dff66da781bb30fd5b26f">Colour</a> *&#160;</td>
+          <td class="paramname"><em>col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>val2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>str2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *&#160;</td>
+          <td class="paramname"><em>child</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que cria um comando e o devolve. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command</td><td>Inteiro que identifica o comando </td></tr>
+    <tr><td class="paramname">pt</td><td>Pontos (1,2 3,4 5,6) </td></tr>
+    <tr><td class="paramname">dim</td><td>Dimensoes (20x10) </td></tr>
+    <tr><td class="paramname">col</td><td>Cor (r:g:b) </td></tr>
+    <tr><td class="paramname">val</td><td>Um valor (Usado para variaveis ou valores inteiros) </td></tr>
+    <tr><td class="paramname">val2</td><td>Um outro Valor (Usado para variaveis ou valores inteiros) </td></tr>
+    <tr><td class="paramname">str</td><td>Um valor string (Usado para comandos que necessitem de strings tipo LOAD e SAVE) </td></tr>
+    <tr><td class="paramname">str2</td><td></td></tr>
+    <tr><td class="paramname">child</td><td>Commandos encadeados neste </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd></dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00095">95</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8h_source.html#l00078">_Command::child</a>, <a class="el" href="commands_8h_source.html#l00072">_Command::color</a>, <a class="el" href="commands_8h_source.html#l00069">_Command::command</a>, <a class="el" href="commands_8h_source.html#l00071">_Command::dimension</a>, <a class="el" href="commands_8h_source.html#l00077">_Command::next</a>, <a class="el" href="commands_8h_source.html#l00070">_Command::point</a>, <a class="el" href="commands_8h_source.html#l00075">_Command::str</a>, <a class="el" href="commands_8h_source.html#l00076">_Command::str2</a>, <a class="el" href="commands_8h_source.html#l00073">_Command::val</a> e <a class="el" href="commands_8h_source.html#l00074">_Command::val2</a>.</p>
+
+</div>
+</div>
+<a id="a1227ed2479e3da9231e66f23640cdce0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1227ed2479e3da9231e66f23640cdce0">&#9670;&nbsp;</a></span>newImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="commands_8h.html#aa2e142f8620802bf0a8da47bac7bb1b2">Image</a>* newImage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cria uma nova estrutura que irá servir para correr os comandos. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Estrutura com uma imagem </dd></dl>
+<dl class="section see"><dt>Veja também</dt><dd><a class="el" href="commands_8h.html#aa2e142f8620802bf0a8da47bac7bb1b2" title="Estrutura que contem a informação de uma imagem em runtime.">Image</a> </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00190">190</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8h_source.html#l00086">_Image::b</a>, <a class="el" href="commands_8h_source.html#l00086">_Image::g</a>, <a class="el" href="commands_8h_source.html#l00086">_Image::r</a>, <a class="el" href="commands_8h_source.html#l00088">_Image::vars</a>, <a class="el" href="commands_8h_source.html#l00087">_Image::x_size</a> e <a class="el" href="commands_8h_source.html#l00087">_Image::y_size</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="commands_8c_source.html#l00208">Run()</a>.</p>
+
+</div>
+</div>
+<a id="a4fcd691a2cf8c6b21343bcf91125c1c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fcd691a2cf8c6b21343bcf91125c1c7">&#9670;&nbsp;</a></span>parseColour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="commands_8h.html#a108ee31bcf6dff66da781bb30fd5b26f">Colour</a>* parseColour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recebe 3 valores e cria uma estrutura de cor. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td>valor da cor red </td></tr>
+    <tr><td class="paramname">g</td><td>valor da cor gree </td></tr>
+    <tr><td class="paramname">b</td><td>valor da cor blue </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd></dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00029">29</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8h_source.html#l00061">_Colour::b</a>, <a class="el" href="commands_8h_source.html#l00060">_Colour::g</a> e <a class="el" href="commands_8h_source.html#l00059">_Colour::r</a>.</p>
+
+</div>
+</div>
+<a id="ad8c2249bee7249c8593a024ad058aaf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8c2249bee7249c8593a024ad058aaf7">&#9670;&nbsp;</a></span>parseDimension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="commands_8h.html#a887d412140d322e7d383730d4f96ce24">Dimension</a>* parseDimension </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recebe 2 valores e devolve uma estrutura do tipo dimension (x x y) </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>valor de x </td></tr>
+    <tr><td class="paramname">y</td><td>valor de y </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd></dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00044">44</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8h_source.html#l00040">_Dimension::x</a> e <a class="el" href="commands_8h_source.html#l00041">_Dimension::y</a>.</p>
+
+</div>
+</div>
+<a id="ab5aab06abe98a482b14d74dfe31623b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5aab06abe98a482b14d74dfe31623b3">&#9670;&nbsp;</a></span>parsePoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="commands_8h.html#aa9cfdb80b4ca12013a2de8a3b9b97981">Point</a>* parsePoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#aa9cfdb80b4ca12013a2de8a3b9b97981">Point</a> *&#160;</td>
+          <td class="paramname"><em>lst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a> *&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recebe 2 valores de x e y e uma lista de pontos. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lst</td><td>lista de pontos </td></tr>
+    <tr><td class="paramname">x</td><td>valor do ponto em x a adicionar à lista </td></tr>
+    <tr><td class="paramname">y</td><td>valor do ponto em y a adicionar à lista </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd></dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00059">59</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8h_source.html#l00051">_Point::next</a>, <a class="el" href="commands_8h_source.html#l00049">_Point::x</a> e <a class="el" href="commands_8h_source.html#l00050">_Point::y</a>.</p>
+
+</div>
+</div>
+<a id="a58121306ac54ce82b0b36444a392b145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58121306ac54ce82b0b36444a392b145">&#9670;&nbsp;</a></span>parseValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="commands_8h.html#a24bc839b75155fea1b95e7362f28ad08">Value</a>* parseValue </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cria uma estutura do tipo value dependendo se enviamos uma string ou um valor. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>valor inteiro </td></tr>
+    <tr><td class="paramname">str</td><td>valor string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd></dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00074">74</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8h_source.html#l00032">_Value::val</a> e <a class="el" href="commands_8h_source.html#l00031">_Value::var</a>.</p>
+
+</div>
+</div>
+<a id="a6d7fd1f5323453a1718aa531f7592ad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d7fd1f5323453a1718aa531f7592ad4">&#9670;&nbsp;</a></span>Run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Run </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *&#160;</td>
+          <td class="paramname"><em>lst</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função chamada no final de fazer parsing à gramatica program : instructionList { Run($1); } A mesma cria uma imagem e corre os comandos contidos na lst. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lst</td><td>Lista de Comandos a Correr </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00208">208</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8c_source.html#l00190">newImage()</a> e <a class="el" href="commands_8c_source.html#l00219">runCommands()</a>.</p>
+
+</div>
+</div>
+<a id="a5a31595ed6751c6de3a4635b4773a7a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a31595ed6751c6de3a4635b4773a7a9">&#9670;&nbsp;</a></span>runCommands()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void runCommands </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#a364b58d9d08528957b0a75b1b1d5b96a">Command</a> *&#160;</td>
+          <td class="paramname"><em>lst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#aa2e142f8620802bf0a8da47bac7bb1b2">Image</a> *&#160;</td>
+          <td class="paramname"><em>image</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função recursiva principal que corre os comandos pertencentes à lista de comandos que foi feito o parsing. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lst</td><td>Lista de comandos </td></tr>
+    <tr><td class="paramname">image</td><td>Estrutura com informação da imagem </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00219">219</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8h_source.html#l00069">_Command::command</a>, <a class="el" href="commands_8h_source.html#l00077">_Command::next</a> e <a class="el" href="commands_8c_source.html#l00219">runCommands()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="commands_8c_source.html#l00208">Run()</a> e <a class="el" href="commands_8c_source.html#l00219">runCommands()</a>.</p>
+
+</div>
+</div>
+<a id="ae2098799a0e33fb06755fa84130b3749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2098799a0e33fb06755fa84130b3749">&#9670;&nbsp;</a></span>updateVar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="commands_8h.html#afe3ebba24f9cd319804a07ed008c6cef">VarList</a>* updateVar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="commands_8h.html#afe3ebba24f9cd319804a07ed008c6cef">VarList</a> *&#160;</td>
+          <td class="paramname"><em>lst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>varName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>varValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Altera o valor de uma variavel. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lst</td><td>lista de variaveis </td></tr>
+    <tr><td class="paramname">varName</td><td>nome da variavel </td></tr>
+    <tr><td class="paramname">varValue</td><td>novo valor inteiro </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd></dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="commands_8c_source.html#l00131">131</a> do ficheiro <a class="el" href="commands_8c_source.html">commands.c</a>.</p>
+
+<p class="reference">Referências <a class="el" href="commands_8h_source.html#l00023">_varList::next</a>, <a class="el" href="commands_8c_source.html#l00131">updateVar()</a>, <a class="el" href="commands_8h_source.html#l00022">_varList::val</a> e <a class="el" href="commands_8h_source.html#l00021">_varList::var</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="commands_8c_source.html#l00131">updateVar()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="commands_8c.html">commands.c</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Trabalho Prático 2: Trabalho Prático de PL</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ipca_logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Trabalho Prático 2
+   </div>
+   <div id="projectbrief">Processamento de Linguagens</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('index.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">Trabalho Prático de PL </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>O presente software foi desenvolvido no contexto académico e deve ser utilizado sem qualquer garantia por conta e risco do utilizador.</p>
+<p><a href="https://travis-ci.com/nargotik/TP2_PL"><img src="https://travis-ci.com/nargotik/TP2_PL.svg?token=qNfqiYyxNzmWoPqpyHnZ&amp;branch=master" alt="Build Status" class="inline"/></a></p>
+<p><b>Autores:</b></p><ul>
+<li>José Moura <a href="#" onclick="location.href='mai'+'lto:'+'a13'+'74'+'2@a'+'lu'+'nos'+'.i'+'pca'+'.p'+'t'; return false;">a1374<span style="display: none;">.nosp@m.</span>2@al<span style="display: none;">.nosp@m.</span>unos.<span style="display: none;">.nosp@m.</span>ipca<span style="display: none;">.nosp@m.</span>.pt</a></li>
+<li>Óscar Silva <a href="#" onclick="location.href='mai'+'lto:'+'a14'+'38'+'3@a'+'lu'+'nos'+'.i'+'pca'+'.p'+'t'; return false;">a1438<span style="display: none;">.nosp@m.</span>3@al<span style="display: none;">.nosp@m.</span>unos.<span style="display: none;">.nosp@m.</span>ipca<span style="display: none;">.nosp@m.</span>.pt</a></li>
+<li>Daniel Torres <a href="#" onclick="location.href='mai'+'lto:'+'a17'+'44'+'2@a'+'lu'+'nos'+'.i'+'pca'+'.p'+'t'; return false;">a1744<span style="display: none;">.nosp@m.</span>2@al<span style="display: none;">.nosp@m.</span>unos.<span style="display: none;">.nosp@m.</span>ipca<span style="display: none;">.nosp@m.</span>.pt</a></li>
+</ul>
+<p><b>Links Uteis</b></p><ul>
+<li>GitHub: <a href="https://github.com/nargotik/TP2_PL">https://github.com/nargotik/TP2_PL</a></li>
+<li>Documentação: <a href="https://nargotik.github.io/TP2_PL/">https://nargotik.github.io/TP2_PL/</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Introdução</h1>
+<p>O objetivo deste trabalho é o de implementar uma ferramenta capaz de ler um documento de texto usando uma determinada sintaxe. A resolução deste trabalho foi dividida em duas partes :</p><ul>
+<li><b>Análise Léxica</b> para verificar se os caracteres introduzidos fazem parte do alfabeto por nós criado;</li>
+<li><b>Análise Sintática</b> para verificar se os dados introduzidos seguem as regras gramaticais definidas na gramática por nós criada.</li>
+</ul>
+<p>De forma a comprovar os conceitos de analisador léxico e sintático, foi-nos proposta uma série de problemas e de entre essas propostas dadas, deveríamos escolher uma para implementar. A nossa escolha recaiu no problema 2: Linguagem de Desenho de Imagens Raster por nos parecer um enunciado bastante interessante do ponto de vista de comprovar as valências do uso do "par Flex-Bison".</p>
+<p>De forma bastante sucinta, este problema propunha a implementação de uma linguagem para a descrição e criação de imagens através da interpretação de um simples documento de texto com determinada sintaxe pré-estabelecida.</p>
+<p>Para a realização deste trabalho foram utilizadas as ferramentas abaixo descritas:</p>
+<ul>
+<li>Flex (Versão 2.6.0)</li>
+<li>Bison (Versão 3.0.4)</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Estratégia de resolução do Problema</h2>
+<p>Para resolver tal problema foi-nos sugerido o uso do formato <em>PNM</em> por ser um formato bastante simples a nível de leitura e escrita e com a vantagem de poder ser armazenado em memória usando matrizes. A família <em>PNM</em> possui vários sub-formatos sendo designados por P*n* estando <em>n</em> definido entre 1 e 6. As diferenças entre eles baseiam-se na forma como são codificados (ASCII ou Binário) e quais os conjuntos de cores que conseguem armazenar (B&amp;W, 256 cinzentos ou 16M cores).</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">Nome  </th><th class="markdownTableHeadCenter">P1  </th><th class="markdownTableHeadCenter">P2  </th><th class="markdownTableHeadCenter">P3  </th><th class="markdownTableHeadCenter">P4  </th><th class="markdownTableHeadCenter">P5  </th><th class="markdownTableHeadCenter">P6   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">Cores  </td><td class="markdownTableBodyCenter">B&amp;W  </td><td class="markdownTableBodyCenter">256 Cinzentos  </td><td class="markdownTableBodyCenter">16M Cores  </td><td class="markdownTableBodyCenter">B&amp;W  </td><td class="markdownTableBodyCenter">256 Cinzentos  </td><td class="markdownTableBodyCenter">16M Cores   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">Codificação  </td><td class="markdownTableBodyCenter">ASCII  </td><td class="markdownTableBodyCenter">ASCII  </td><td class="markdownTableBodyCenter">ASCII  </td><td class="markdownTableBodyCenter">Binário  </td><td class="markdownTableBodyCenter">Binário  </td><td class="markdownTableBodyCenter">Binário   </td></tr>
+</table>
+<p>Face à representação vista na tabela acima, resolvemos utilizar o formato <em>P6</em> pois o mesmo permite a criação de imagens a 16M Cores, mesmo que a nível de codificação, os pixeis da imagem sejam em binário, usando um byte para representar cada cor.</p>
+<h3><a class="anchor" id="autotoc_md3"></a>
+Definição da linguagem de Desenho</h3>
+<p>A linguagem de desenho é definida através da interpretação de um conjunto de comandos previamente estabelecidos e devem terminal por ponto e virgula (;). Definiu-se ainda que:</p><ul>
+<li>Os comandos deveriam ser escritos em maiúsculas;</li>
+<li>As variáveis deveriam ser escritas em minúsculas;</li>
+<li>Só se podem usar valores inteiros;</li>
+<li>Um ponto geométrico é definido por dois inteiros separados por uma vírgula;</li>
+<li>Uma área é definida por dois inteiros separados por 'x';</li>
+<li>Uma cor é definida através da representação numérica RGB (três inteiros separados por dois pontos);</li>
+<li>Uma string é delimitada por aspas simples.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md4"></a>
+1. Gestão de Imagens</h3>
+<p>Para a gestão das imagens foram definidas os seguintes comandos:</p><ul>
+<li>NEW - Comando que prepara a área de desenho, recebendo como parâmetros o tamanho da área de desenho (p.ex. 800x600) e a cor iniciada (p.ex. 255:0:0). <div class="fragment"><div class="line">NEW 800x600 255:0:0;</div>
+</div><!-- fragment --> O parâmetro cor é opcional, sendo que, no caso de ser omitido, a área de desenho é iniciada com a cor branca (255:255:255) <div class="fragment"><div class="line">NEW 800x600;</div>
+</div><!-- fragment --></li>
+<li>LOAD - Comando encarregado de carregar um ficheiro *.pnm* para memória. <div class="fragment"><div class="line">LOAD &quot;ficheiro.pnm&quot;;</div>
+</div><!-- fragment --></li>
+<li>SAVE - Comando encarregado de guardar uma imagem gerada em memória num ficheiro de imagem P6. <div class="fragment"><div class="line">SAVE &quot;ficheiro.pnm&quot;;</div>
+</div><!-- fragment --> </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md5"></a>
+2. Desenho</h3>
+<p>Segundo o enunciado, todas as primitivas de desenho deverão aceitar um último parâmetro com a cor a ser usada para desenhar. No entanto pode ser definida uma cor "por omissão", sendo que essa será definida pelo comando COLOR.</p>
+<ul>
+<li>COLOR - Comando responsável por definir a cor padrão caso os comandos não possuam uma cor definida nos seus parâmetros. <div class="fragment"><div class="line">COLOR 128:128:128;</div>
+</div><!-- fragment --></li>
+<li>POINT - Comando responsável por desenhar um ponto nas coordenadas <em>x,y</em> indicadas. <div class="fragment"><div class="line">POINT 4,100;</div>
+</div><!-- fragment --> Opcionalmente podemos ainda definir a cor que deve ser usada para o ponto. <div class="fragment"><div class="line">POINT 4,100 255:128:0;</div>
+</div><!-- fragment --></li>
+<li>LINE - Comando responsável converter dois pontos recebidos em uma reta e em desenhá-la. <div class="fragment"><div class="line">LINE 4,100 4,200; // Utilizando cor padrão</div>
+<div class="line">LINE 4,100 4,200 255:128:0; // Utilizando uma cor específica</div>
+</div><!-- fragment --></li>
+<li>RECT - Comando responsável por desenhar quadrados. Aceita como parâmetros dois pontos opostos.</li>
+</ul>
+<div class="fragment"><div class="line">RECT 5,10 10,20; // Utilizando cor padrão</div>
+<div class="line">RECT 5,10 10,20 255:128:0; // Utilizando uma cor específica</div>
+</div><!-- fragment --><p> Aceita ainda como parâmetros o ponto que se encontra na posição do canto superior esquerdo e as dimensões do quadrado.</p>
+<div class="fragment"><div class="line">RECT 5,10 10x20; // Utilizando cor padrão</div>
+<div class="line">RECT 5,10 10x20 255:128:0; // Utilizando uma cor específica</div>
+</div><!-- fragment --><ul>
+<li>RECTFILL - Comando similar ao anterior, no entanto possui a capacidade de pintar de determinada cor (a padrão ou uma especifica). <div class="fragment"><div class="line">// Utilizando cor padrão</div>
+<div class="line">RECTFILL 5,10 10,20;</div>
+<div class="line">RECTFILL 5,10 10x20;</div>
+<div class="line">// Utilizando uma cor específica</div>
+<div class="line">RECTFILL 5,10 10,20 255:128:0; </div>
+<div class="line">RECTFILL 5,10 10x20 255:128:0;</div>
+</div><!-- fragment --></li>
+<li>CIRC - Comando responsável por desenhar círculos. Para desenhar aceita como parâmetros um ponto fixo que funcionará como centro e um raio. <div class="fragment"><div class="line">CIRC 5,10 100; // Utilizando cor padrão</div>
+<div class="line">CIRC 5,10 100 255:128:0; // Utilizando uma cor específica</div>
+</div><!-- fragment --></li>
+<li>CIRCFILL - Comando similar ao anterior, no entanto possui a capacidade de pintar de determinada cor (a padrão ou uma específica).</li>
+</ul>
+<div class="fragment"><div class="line">CIRCFILL 5,10 100; // Utilizando cor padrão</div>
+<div class="line">CIRCFILL 5,10 100 255:128:0; // Utilizando uma cor específica</div>
+</div><!-- fragment --><ul>
+<li>POLYLINE - Comando responsável por desenhar linhas entre os pontos passados como parâmetros. <div class="fragment"><div class="line">POLYLINE 5,10 10,10 10,15; // Utilizando cor padrão</div>
+<div class="line">POLYLINE 5,10 10,10 10,15 255:128:0; // Utilizando uma cor específica</div>
+</div><!-- fragment --> </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md6"></a>
+3. Variáveis e Expressões</h3>
+<p>Como se pode verificar, muitos dos parâmetros que na secção anterior foram apresentados são definições de pontos geométricos e códigos RGB para as cores a aplicar na instrução. Face a esse facto, podemos então definir variáveis que permitirão armazenar os dados referentes aos pontos geométricos ou ao código RGB da cor.</p>
+<p>A sua atribuição é similar ao utilizado na linguagem C, utilizando-se o caráter '='. Tal como em C, a atribuição de dados a uma variável pode ser do tipo numérico ou outra variável.</p>
+<div class="fragment"><div class="line">raio = 2;</div>
+<div class="line">diametro = raio;</div>
+</div><!-- fragment --><p> Salienta-se o facto que os caracteres "x" "y" "z" não podem ser usados como variáveis pois no contexto do problema serão usados como delineadores de instruções.</p>
+<p>Uma outra funcionalidade bastante importante na geração imagens é o facto de podermos criar imagens com pontos aleatórios. Para tal, foi necessário utilizar a função RAND nativa do C para gerar pontos aleatórios na área de desenho, sendo que o valor apresentado após o termo <em>RAND</em> é o valor máximo admitido.</p>
+<div class="fragment"><div class="line">a = RAND 10;</div>
+</div><!-- fragment --><p> No exemplo acima apresentado, a variável <em>a</em> pode tomar valores entre 0 e 10, inclusive.</p>
+<p>É também muito importante que a linguagem de desenho aceite iterar várias vezes a mesma instrução. Para tal, é necessário aplicar o conceito de ciclos. Foi desenvolvido então um ciclo <em>for</em> muito similar ao aplicado em linguagens imperativas, no entanto com ligeiras nuances.</p>
+<div class="fragment"><div class="line">FOR i IN [10..20] DO ... END FOR;</div>
+</div><!-- fragment --> <h1><a class="anchor" id="autotoc_md7"></a>
+Utilização/Compilação</h1>
+<p>Para compilar as aplicações necessárias simplesmente é necessário efectuar o comando: </p><div class="fragment"><div class="line">$ make</div>
+</div><!-- fragment --><p>O executavel será criado na pasta bin e pode ser executado da seguinte forma:</p>
+<div class="fragment"><div class="line">$ ./bin/imageraster &lt; examples/example[...]txt</div>
+</div><!-- fragment --> <h1><a class="anchor" id="autotoc_md8"></a>
+Estrutura do Flex</h1>
+<p>O Flex é um software desenvolvido com o intuito de permitir a análise léxica de um determinado conjunto de dados através do reconhecimento de sequências de caracteres ("tokens") definidas pelo programador.</p>
+<p>Um ficheiro de Flex é composto por três zonas delimitadas por <b>%%</b></p>
+<p>A primeira parte, o preâmbulo, é o local onde se faz a inclusão das bibliotecas e da definição de conjuntos de caracteres.</p>
+<div class="fragment"><div class="line">%{</div>
+<div class="line"> #include &quot;../src/commands.h&quot;</div>
+<div class="line"> #include &quot;../include/grammar.tab.h&quot;</div>
+<div class="line">%}</div>
+</div><!-- fragment --><p> No ficheiro por nós desenvolvido, o preâmbulo é constituído pela inclusão da biblioteca com a definição das funções necessárias para a criação de um software de desenho de imagens em Raster. É também definida no preâmbulo o ficheiro grammar.tab.h que informa ao analisador léxico que o Flex vai ser usado em conjunto com o Bison.</p>
+<p>A segunda parte, o corpo, é a zona na qual estão definidas as expressões regulares, assim como as ações semânticas que poderão ser despoletadas aquando do eventual reconhecimento de um <em>token</em>.</p>
+<div class="fragment"><div class="line">%%</div>
+<div class="line"> </div>
+<div class="line">NEW|new     { return NEW; }</div>
+<div class="line">LOAD|load     { return LOAD; }</div>
+<div class="line">LINE|line     { return LINE; }</div>
+<div class="line">SAVE|save     { return SAVE; }</div>
+<div class="line">COLOR|color     { return COLOR; }</div>
+<div class="line">POINT|point     { return POINT; }</div>
+<div class="line">RECT|rect     { return RECT; }</div>
+<div class="line">RECTFILL|rectfill     { return RECTFILL; }</div>
+<div class="line">CIRC|circ     { return CIRC; }</div>
+<div class="line">POLYLINE|polyline     { return POLYLINE; }</div>
+<div class="line">FOR|for     { return FOR; }</div>
+<div class="line">IN|in     { return IN; }</div>
+<div class="line">DO|do     { return DO; }</div>
+<div class="line">END|end     { return END; }</div>
+<div class="line">\.\.    { return TO; }</div>
+<div class="line"> </div>
+<div class="line">RAND|rand     { return RAND; }</div>
+<div class="line"> </div>
+<div class="line">\; { return EOC; }</div>
+<div class="line"> </div>
+<div class="line">x { return CRUZ; }</div>
+<div class="line"> </div>
+<div class="line">[0-9]+      { yylval.num = atoi(yytext); return INT; }</div>
+<div class="line"> </div>
+<div class="line">[a-v]+([0-9]+)?    { yylval.str = strdup(yytext); return VAR_NAME; }</div>
+<div class="line"> </div>
+<div class="line">\&quot;[1-9a-zA-Z\.]+\&quot;    { yylval.str = strdup(yytext+1); return FILE_NAME; }</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">[ \t\n\r]   {}</div>
+<div class="line">.           { return yytext[0]; }</div>
+<div class="line"> </div>
+<div class="line">%%</div>
+</div><!-- fragment --><p> Na nossa implementação, o corpo é constituído por expressões regulares que permitem reconhecer em <em>Ignore Case Sensitive</em> as diversas instruções e caracteres especiais utilizados pela nossa implementação de desenho de imagens em Rasper. Se for reconhecido algum dos <em>tokens</em> definidos no <b><a class="el" href="lexer_8l.html">lexer.l</a></b>, é retornado para o programa a devida função de C a ser invocada para tratar aquele comando.</p>
+<p>A terceira parte é destinada para as funções adicionais necessárias para o bom funcionamento do analisador léxico.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> yywrap() { <span class="keywordflow">return</span> 1; }</div>
+</div><!-- fragment --><p> Nesta implementação, foi definida a função <b>yywrap()</b> que retorna 1 e que passa a informação ao analisador léxico que estamos na presença de EOF (End Of File).</p>
+<h1><a class="anchor" id="autotoc_md9"></a>
+Estrutura do Bison</h1>
+<p>O Bison é um software desenvolvido com o intuito de permitir gerar automaticamente programas para análise sintática. Possui como entrada a declaração de uma gramática, que especifica uma linguagem e gera como saída o <em>parser</em> dessa linguagem. O <em>parser</em> gerado pelo Bison permite validar os argumentos lá introduzidos permitindo assim, averiguar se os mesmos seguem a lógica sintática definida na nossa gramática.</p>
+<p>De forma similar ao que acontece na estrutura de ficheiro do Flex, um ficheiro de Bison é também composto por três zonas delimitadas por <b>%%</b></p>
+<p>A primeira parte, o preâmbulo, é o local onde se faz a inclusão das bibliotecas a serem utilizadas.</p>
+<div class="fragment"><div class="line">%{</div>
+<div class="line">  #include &lt;stdio.h&gt;</div>
+<div class="line">  #include &lt;string.h&gt;</div>
+<div class="line">  #include &quot;../src/commands.h&quot;</div>
+<div class="line">  int yylex();</div>
+<div class="line">  int yyerror(char*);</div>
+<div class="line">  #define DEBUG 1</div>
+<div class="line">%}</div>
+</div><!-- fragment --><p> No ficheiro por nós desenvolvido, o preâmbulo é constituído pela inclusão da biblioteca com a definição das funções necessárias para a criação de um software de desenho de imagens em Raster. É também incluído no preâmbulo a biblioteca <a class="el" href="commands_8h.html" title="Ficheiro Header.">commands.h</a> que informa ao analisador sintático que as funções que concretizam as instruções definidas na gramática estão concretizadas nessa biblioteca.</p>
+<p>São ainda definidos outros blocos de código que dizem respeito a outras declarações.</p>
+<div class="fragment"><div class="line">%union {</div>
+<div class="line">   int num;</div>
+<div class="line">   Command *cmd; // both a single command or a command list</div>
+<div class="line">   Value *val;</div>
+<div class="line">   Dimension *dim;</div>
+<div class="line">   Colour *col;</div>
+<div class="line">   Point *pt;</div>
+<div class="line">   char *str;  // used for variable names</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">%token NEW LOAD SAVE COLOR POINT RECT RECTFILL CIRC POLYLINE EOC LINE RAND CRUZ FOR IN DO END TO ATTRIB ATTRIB_RAND</div>
+<div class="line">%token&lt;str&gt; VAR_VALUE VAR_NAME FILE_NAME</div>
+<div class="line">%token&lt;num&gt; INT</div>
+<div class="line"> </div>
+<div class="line">%type&lt;cmd&gt; instructionList instruction</div>
+<div class="line">%type&lt;dim&gt; v_dimension</div>
+<div class="line">%type&lt;col&gt; v_colour</div>
+<div class="line">%type&lt;pt&gt; v_point v_points_multiple v_points_two</div>
+<div class="line">%type&lt;val&gt; value</div>
+<div class="line"> </div>
+<div class="line">%start program;</div>
+<div class="line">%expect 1</div>
+</div><!-- fragment --><p>Na nossa implementação foram necessárias usar algumas definições extra que têm como objetivo o seguinte:</p><ul>
+<li>union - Permite definir a estrutura que o <em>lexer</em> vai usar para transmitir esse conjunto de dados para o analisador;</li>
+<li>token - Permite definir símbolos que representam os valores que serão retornados pelo <em>lexer</em> e que correspondem a símbolos terminais em produções;</li>
+<li>type - Permite especificar nomes para símbolos não terminais em produções;</li>
+<li>start - Indica ao Bison qual é o símbolo não terminal onde a gramática deve iniciar.</li>
+</ul>
+<p>A segunda parte, o corpo, é a zona na qual estão definidas as produções e o respetivo código a ser invocado caso a regra sintática seja correspondida.</p>
+<div class="fragment"><div class="line">program : instructionList { Run($1); }</div>
+<div class="line">        ;</div>
+<div class="line"> </div>
+<div class="line">instructionList : instruction { $$ = $1; }</div>
+<div class="line">                | instruction instructionList</div>
+<div class="line">                       { $$ = insertCommand($2,$1); }</div>
+<div class="line">                ;</div>
+<div class="line"> </div>
+<div class="line">(...)</div>
+<div class="line"> </div>
+<div class="line">v_dimension : value CRUZ value {</div>
+<div class="line">                $$ = parseDimension($1,$3);</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">v_colour  : value &#39;:&#39; value &#39;:&#39; value {</div>
+<div class="line">                $$ = parseColour($1, $3, $5);</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">v_point : value &#39;,&#39; value {</div>
+<div class="line">                $$ = parsePoint(NULL,$1,$3);</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">v_points_multiple : v_point {</div>
+<div class="line">          $$ = $1;</div>
+<div class="line">      }</div>
+<div class="line">      | v_points_multiple v_point {</div>
+<div class="line">          $2-&gt;next = $1;</div>
+<div class="line">          $$ = $2;</div>
+<div class="line">      }</div>
+<div class="line">      ;</div>
+<div class="line">v_points_two : v_point v_point {</div>
+<div class="line">        $1-&gt;next = $2;</div>
+<div class="line">        $$ = $1;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">value : INT  {  Value* v = (Value*)malloc(sizeof(Value));</div>
+<div class="line">               v-&gt;val = $1;</div>
+<div class="line">               v-&gt;var = NULL;</div>
+<div class="line">               $$ = v; }</div>
+<div class="line">     | VAR_NAME {</div>
+<div class="line">               Value *v = (Value*)malloc(sizeof(Value));</div>
+<div class="line">               v-&gt;var = $1;</div>
+<div class="line">               $$ = v; }</div>
+<div class="line">     ;</div>
+</div><!-- fragment --><p>Na nossa implementação, o corpo é constituído pelas produções que permitem verificar se a sintaxe usada no ficheiro de texto permite criar a imagem. Em caso afirmativo são invocadas as funções necessárias para a criação da imagem. Em caso contrário a imagem não será criada.</p>
+<p>A terceira parte é destinada para as funções adicionais necessárias para o bom funcionamento do analisador sintático.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> yyerror(<span class="keywordtype">char</span>* msg) { printf(<span class="stringliteral">&quot;Error: %s\n&quot;</span>, msg); <span class="keywordflow">return</span> 0; }</div>
+</div><!-- fragment --><p>Nesta implementação, foi definida a função <b>yyerror()</b> que retorna o código do erro para o utilizador, caso algum erro se verifique. Caso contrário retorna um 0.</p>
+<h1><a class="anchor" id="autotoc_md10"></a>
+Resultados obtidos</h1>
+<p>Após a concretização de todas as funções e comandos necessários para a resolução do problema, se for executado o comando abaixo descrito obteremos a imagem PNM (P6) que esperávamos.</p>
+<div class="fragment"><div class="line">$ ./bin/imageraster &lt; examples/example[...]txt</div>
+</div><!-- fragment --><p>Seguem abaixo alguns exemplos gerados:</p>
+<p><img src="https://github.com/nargotik/TP2_PL/raw/master/images/bar_circ.png" alt="CIRC" class="inline"/> <img src="https://github.com/nargotik/TP2_PL/raw/master/images/bar_line.png" alt="LINE" class="inline"/> <img src="https://github.com/nargotik/TP2_PL/raw/master/images/bar_polyline.png" alt="POLYLINE" class="inline"/> <img src="https://github.com/nargotik/TP2_PL/raw/master/images/bar_recfill.png" alt="RECTFILL" class="inline"/> <img src="https://github.com/nargotik/TP2_PL/raw/master/images/bar_rect.png" alt="RECT" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md11"></a>
+Conclusão</h1>
+<p>A título de conclusão, podemos verificar que um compilador é um componente bastante complexo, na medida em todo o progresso de análise léxica e sintática regem-se por regras bastante bem definidas.</p>
+<p>Concluímos ainda que a junção Flex-Bison permite simular muito bem qual o <em>WorkFlow</em> que o compilador utiliza de cada vez que necessita de verificar os dados que a ele são submetidos.</p>
+<p>Verificámos ainda que o processo de análise sintática é muito mais complexa do que a análise léxica e que a definição de uma gramática deve ser o mais objetiva possível de forma a impedir situações de erros derivados a ambiguidades do analisador sintático.</p>
+<h1><a class="anchor" id="autotoc_md12"></a>
+Bibliografia / Referências</h1>
+<ul>
+<li><a href="https://github.com/westes/flex">GitHub Flex</a></li>
+<li><a href="http://web.eecs.utk.edu/~bvanderz/teaching/cs461Sp11/notes/bison/">Bison Lecture</a> </li>
+</ul>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>
