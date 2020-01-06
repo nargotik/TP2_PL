@@ -28,7 +28,7 @@
 }
 
 %token NEW LOAD SAVE COLOR POINT RECT RECTFILL CIRC
-%token POLYLINE EOC LINE RAND CRUZ FOR IN DO END TO ATTRIB ATTRIB_RAND CIRCFILL
+%token POLYLINE EOC LINE RAND CRUZ FOR IN DO END TO ATTRIB ATTRIB_RAND CIRCFILL INVERT
 %token<str> VAR_VALUE VAR_NAME FILE_NAME
 %token<num> INT
 
@@ -80,6 +80,21 @@ instruction : NEW v_dimension EOC {
                     NULL /*next*/
                     );
             }
+
+             | INVERT  EOC {
+                              //printf("CMD NEW: %d x %d - COLOR %d,%d,%d\n" ,$2->x.val,$2->y.val,$3->r.val,$3->g.val,$3->b.val);
+                              $$ =   newCommand(
+                                INVERT, /* Command*/
+                                NULL, /*Point*/
+                                NULL,  /*Dimensions*/
+                                NULL, /*Colours*/
+                                NULL, /*Val*/
+                                NULL, /*Val1*/
+                                NULL, /*str1*/
+                                NULL, /*str2*/
+                                NULL /*next*/
+                                );
+                        }
             | COLOR v_colour EOC {
                   //printf("CMD COLOR: %d,%d,%d\n" ,$2->r.val,$2->g.val,$2->b.val);
                   $$ =   newCommand(
@@ -215,7 +230,7 @@ instruction : NEW v_dimension EOC {
             | RECT v_point v_dimension EOC {
                   //printf("RECT WITH 1 POINT %d,%d  %d x %d\n" ,$2->x.val,$2->y.val,$3->x.val,$3->y.val);
                   $$ =   newCommand(
-                    RECT, /* Command*/
+                    RECT, /* Command */
                     $2, /*Point*/
                     $3,  /*Dimensions*/
                     NULL, /*Colours*/

@@ -19,6 +19,7 @@
 
 NEW|new     { return NEW; }
 LOAD|load     { return LOAD; }
+INVERT|invert     { return INVERT; }
 LINE|line     { return LINE; }
 SAVE|save     { return SAVE; }
 COLOR|color     { return COLOR; }

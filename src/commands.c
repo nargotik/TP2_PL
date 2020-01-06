@@ -442,6 +442,18 @@ void runCommands(Command *lst, Image *image) {
 
         };
             break;
+
+        case INVERT:
+        {
+            for (int i = 0; i< (image->x_size*image->y_size * 3); i++) {
+                image->img_data[i] = 255 - image->img_data[i];
+            }
+
+
+        };
+            break;
+
+
         case CIRCFILL:
         {
             // @done
@@ -454,7 +466,7 @@ void runCommands(Command *lst, Image *image) {
             int y = (lst->point == NULL) ? 1 : evalValue(image->vars, &lst->point->y);
 
             int raio = (lst->val == NULL) ? 1 : evalValue(image->vars, lst->val);
-            
+
             for (int i=raio; i>0 ; i--) {
                 drawCircle(image->img_data,image->x_size,image->y_size, i,x,y,r,g,b);
             }
